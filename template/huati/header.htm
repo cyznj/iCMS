@@ -1,0 +1,36 @@
+<header class="header">
+    <div class="container">
+      <h1 class="logo">
+        <a href="<!--{$site.url}-->" title="<!--{$site.seotitle}-->">
+          <!--{$site.name}-->
+        </a>
+      </h1>
+      <ul class="nav">
+        <li class="navto-home active" id="c0">
+          <a href="<!--{$site.url}-->">首页</a>
+        </li>
+        <!--{iCMS:category:list loop="true" stype='top' row="10"}-->
+          <li class="navto-<!--{$category_list.dir}-->" id="c<!--{$category_list.cid}-->">
+            <a href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a>
+          </li>
+        <!--{/iCMS}-->
+      </ul>
+      <div class="user-signin" id="iCMS-nav-login">
+        <span evt="login"><a href="<!--{iCMS:router url='/api/user/login'}-->" class="iCMS_user_login" title="登录">登录</a></span> |
+        <span evt="login" reg="1"><a href="<!--{iCMS:router url='/api/user/register'}-->" target="_blank">注册</a></span>
+      </div>
+      <div class="user-welcome" id="iCMS-nav-profile">
+        <!--{include file="iCMS://user/menu.htm"}-->
+      </div>
+
+      <form id="iCMS-search-box" method="get" class="searchform" action="<!--{iCMS:router url='/api'}-->" >
+        <input name="app" type="hidden" value="search" />
+        <input type="text" name="q" class="search-input" placeholder="请输入关键词" value="<!--{$search.title}-->">
+        <button class="search-btn iCMS_search_btn" type="submit">搜索</button>
+      </form>
+    </div>
+  </header>
+<script type="text/javascript">
+$("#c0").removeClass("active");
+$("#c<!--{$category.cid|default:0}-->").addClass("active");
+</script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><!--{if $user}-->欢迎加入<!--{else}-->新用户注册<!--{/if}--> <!--{$site.title}-->_<!--{$site.seotitle}--></title>
+    <meta name="keywords" content="<!--{$site.keywords}-->" />
+    <meta name="description" content="<!--{$site.description}-->"/>
+    <meta name="mobile-agent" content="format=html5;url=<!--{$site.url}-->"/>
+    <!--{iCMS:public:ui}-->
+    <script src="<!--{$site.urls.ui}-->/iCMS.register-6.0.0.js"></script>
+    <link href="<!--{$site.urls.ui}-->/iCMS.loginreg-6.0.0.css" rel="stylesheet" type="text/css" />
+    <script>
+    $(function(){
+      <!--{if $user}-->
+      iCMS.user.OPENID = <!--{$user|json_encode}-->;
+      $("[name=gender][value=<!--{$user.gender}-->]").prop("checked",true);
+      <!--{/if}-->
+      iCMS.user.register();
+    })
+    </script>
+  </head>
+  <body class="iCMS_register_wrap">
+    <div class="register_wrap">
+      <div class="logo"> <a href="<!--{$site.url}-->" class="iCMS fl" title="<!--{$site.title}-->"><!--{$site.title}--></a> </div>
+      <div class="content">
+        <div class="main-col">
+          <h1><!--{if $user}-->欢迎加入<!--{$site.title}--><!--{else}-->新用户注册<!--{/if}--></h1>
+          <div class="rl_center">
+            <!--{if $user}-->
+            <div class="alert" style="width: 500px;margin-top: 10px;margin-bottom: 5px;">
+              <strong>*</strong>请先补充必要的个人信息，只有补充完这些信息才能真正加入<!--{$site.title}-->哦
+            </div>
+            <!--{/if}-->
+            <div id="iCMS-register-box" class="rl_form">
+              <div class="reg_mail"> <span>电子邮箱：</span>
+                <input id="iCMS-reg-username" type="text" maxlength="36" name="username" class="text" value="">
+              </div>
+              <div class="reg_nickname"> <span>昵称：</span>
+                <input id="iCMS-reg-nickname" style="*margin-left:-1px;" maxlength="36" type="text" name="nickname" class="text" value="<!--{$user.nickname}-->">
+              </div>
+              <div class="reg_sex"> <span>性别：</span>
+                <div class="rdo">
+                  <input type="radio" name="gender" value="girl" checked="checked" class="ck">
+                  女
+                  <input style="margin-left:10px" type="radio" name="gender" value="boy" class="ck">
+                男 </div>
+              </div>
+              <div class="reg_password"> <span>密码：</span>
+                <input id="iCMS-reg-password" style="*margin-left:-1px;" maxlength="36" type="password" name="password" class="text">
+              </div>
+              <div class="reg_respassword"> <span>确认密码：</span>
+                <input id="iCMS-reg-rstpassword" type="password" maxlength="36" name="rstpassword" class="text">
+              </div>
+              <!--{if $iCMS.CONFIG.user.regseccode }-->
+              <div class="reg_check"> <span>验证码：</span>
+                <input id="iCMS-reg-seccode" type="text" maxlength="4" name="seccode" class="iCMS_seccode">
+                <img src="<!--{iCMS:router url='/api/public/seccode'}-->" alt="验证码" class="iCMS_seccode_img r3"/>
+                <a href="javascript:;" class="iCMS_seccode_text" style="float: none">换一张</a>
+              </div>
+              <!--{/if}-->
+              <div class="reg_box">
+                <input class="agreement fl" name="agreement" type="checkbox" checked="checked">
+                <span class="fl">我已看过并同意《<a href="<!--{iCMS:router url='/api/public/agreement'}-->" target="_blank"><!--{$site.title}-->网络服务使用协议</a>》</span> </div>
+                <div class="reg_submit">
+                  <button class="submit iCMS_register_btn"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-col">
+            <div class="rst_login">
+              <span>已经有帐号？请直接登录</span>
+              <a href="<!--{iCMS:router url='/api/user/login' query="$query"}-->"></a>
+            </div>
+            <div class="other_login">
+              <span>您也可以用以下方式登录：</span>
+              <!--{if $iCMS.CONFIG.open.QQ.enable }-->
+              <a class="iCMS_open_icon icon_qq" href="<!--{iCMS:router url='/api/user/login/qq'}-->">QQ 帐号</a>
+              <!--{/if}-->
+              <!--{if $iCMS.CONFIG.open.WB.enable }-->
+              <a class="iCMS_open_icon icon_wb" href="<!--{iCMS:router url='/api/user/login/wb'}-->">新浪微博</a>
+              <!--{/if}-->
+              <!--{if $iCMS.CONFIG.open.WX.enable }-->
+              <a class="iCMS_open_icon icon_wx" href="<!--{iCMS:router url='/api/user/login/wb'}-->">微信账号</a>
+              <!--{/if}-->
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!--{include file="{iTPL}/footer.htm"}-->
+    </body>
+  </html>

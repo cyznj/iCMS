@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title><!--{$article.title}-->_<!--{$category.name}-->_<!--{$site.title}-->_<!--{$site.seotitle}--></title>
+    <meta name="keywords" content="<!--{$article.keywords}-->" />
+    <meta name="description" content="<!--{$article.description}-->"/>
+    <meta name="mobile-agent" content="format=xhtml;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
+    <meta name="mobile-agent" content="format=html5;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
+    <!--{iCMS:public:ui}-->
+  </head>
+  <body class="single single-post postid-<!--{$article.id}--> single-format-standard" data-navto="<!--{$category.dir}-->">
+    <!--{include file="./header.htm"}-->
+    <section class="container">
+      <div class="content-wrap">
+        <div class="content">
+          <header class="article-header">
+            <h1 class="article-title">
+              <a href="<!--{$article.url}-->"><!--{$article.title}--></a>
+            </h1>
+            <div class="article-meta">
+              <time><!--{$article.pubdate|date:"Y-m-d H:s"}--></time>
+              <span class="item">小编：<!--{$article.user.at}--></span>
+              <span class="item">分类：
+              <a href="<!--{$category.url}-->" rel="category tag"><!--{$category.name}--></a>
+              </span>
+              <span class="item">参考：<!--{$article.source|default:'网络'}--></span>
+              <span class="item post-views">阅读(<!--{$article.hits.count}-->)</span>
+              <span class="item"></span>
+            </div>
+          </header>
+          <article class="article-content">
+            <!--{$article.body}-->
+            <!--{if $article.tags_link}-->
+            <p class="article-tags"><strong>继续阅读：</strong>
+              <!--{$article.tags_link}-->
+            </p>
+            <!--{/if}-->
+            <p class="post-copyright">此文由<!--{$site.name}-->编辑，未经允许不得转载：
+              <a href="<!--{$site.url}-->"><!--{$site.name}--></a>
+              &raquo;
+              <a href="<!--{$category.url}-->"><!--{$category.name}--></a>
+              &raquo;
+              <a href="<!--{$article.url}-->"><!--{$article.title}--></a>
+            </p>
+          </article>
+          <div class="article-social" data-param='<!--{$article.param|json_encode}-->'>
+            <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
+              <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
+            </a>
+            <div class="action-share bdsharebuttonbox" id="share-bd">
+              <strong>分享到：</strong>
+              <a class="bds_qzone" data-cmd="qzone"></a>
+              <a class="bds_tsina" data-cmd="tsina"></a>
+              <a class="bds_weixin bdsm" data-cmd="weixin"></a>
+              <a class="bds_tqq" data-cmd="tqq"></a>
+              <a class="bds_sqq bdsm" data-cmd="sqq"></a>
+              <a class="bds_renren" data-cmd="renren"></a>
+              <a class="bds_douban" data-cmd="douban"></a>
+              <span class="bds_count" data-cmd="count"></span>
+            </div>
+          </div>
+          <nav class="article-nav mt20">
+            <span class="article-nav-prev">上一篇<br>
+            <a href="<!--{$article.prev.url}-->" class="prev" target="_self"><!--{$article.prev.title}--></a>
+            </span>
+            <span class="article-nav-next">下一篇<br>
+            <a href="<!--{$article.next.url}-->" class="next" target="_self"><!--{$article.next.title}--></a>
+            </span>
+          </nav>
+          <div class="relates">
+            <h3 class="title"><strong>相关推荐</strong></h3>
+            <ul>
+              <!--{iCMS:article:list loop='true' pic='true' row='8' cid="$category.cid"}-->
+              <li>
+                <a href="<!--{$article_list.url}-->">
+                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                  <!--{$article_list.title}--></a>
+              </li>
+              <!--{/iCMS}-->
+            </ul>
+          </div>
+          <h3 class="title" id="comments">
+            <strong>评论 <b><!--{$article.comment.count}--></b></strong>
+          </h3>
+          <link href="<!--{$site.urls.ui}-->/iCMS.comment-6.0.0.css" type="text/css" rel="stylesheet"/>
+          <script src="<!--{$site.urls.ui}-->/iCMS.comment-6.0.0.js"></script>
+          <div id="postcomments">
+            <!--{iCMS:comment:list display="default" page="true" row="5" appid="$article.appid" iid="$article.id"}-->
+          </div>
+          <div id="respond" class="no_webshot">
+            <!--{iCMS:comment:form display="default" ref="true"}-->
+          </div>
+        </div>
+      </div>
+        <aside class="speedbar-wrap">
+          <div class="speedbar">
+            <ul class="speedbar-menu">
+              <!--{iCMS:category:list loop="true" stype='sub' row="5" cid="4" appid="4"}-->
+              <li><a target="_blank" href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a></li>
+              <!--{/iCMS}-->
+              <!--{iCMS:tag:list loop="true" row="5" orderby="hot"}-->
+              <li><a href="<!--{$tag_list.url}-->"><!--{$tag_list.name}--></a></li>
+              <!--{/iCMS}-->
+            </ul>
+            <div class="speedbar-weixin">
+              <h5>微信关注“<!--{$site.name}-->”<br><!--{$site.description}--></h5>
+              <img src="<!--{iCMS:router url='/api' query='app=public&do=qrcode&url='}--><!--{$site.url}-->" alt="">
+            </div>
+          </div>
+        </aside>
+        <aside class="sidebar">
+          <div class="widget article-social" data-param='<!--{$article.param|json_encode}-->'>
+            <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
+              <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
+            </a>
+            <div class="action-share bdsharebuttonbox">
+              <strong>分享到：</strong>
+              <a class="bds_qzone" data-cmd="qzone"></a>
+              <a class="bds_tsina" data-cmd="tsina"></a>
+              <a class="bds_weixin bdsm" data-cmd="weixin"></a>
+              <a class="bds_tqq" data-cmd="tqq"></a>
+              <a class="bds_sqq bdsm" data-cmd="sqq"></a>
+              <a class="bds_renren" data-cmd="renren"></a>
+              <a class="bds_douban" data-cmd="douban"></a>
+              <span class="bds_count" data-cmd="count"></span>
+            </div>
+          </div>
+          <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
+            <h3 class="title"><strong>7天热门</strong></h3>
+            <ul class="posts-xs">
+              <!--{iCMS:article:list loop="true" row="6" orderby="hot"}-->
+              <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                  <h2><!--{$article_list.title}--></h2>
+                  <p>
+                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                  </p>
+                </a>
+              </li>
+            <!--{/iCMS}-->
+            </ul>
+          </div>
+          <div class="widget widget_ui_tags">
+            <h3 class="title"><strong>热门标签</strong></h3>
+            <div class="items">
+              <!--{iCMS:tag:list loop="true" row="30" orderby="hot"}-->
+              <a href="<!--{$tag_list.url}-->" target="_blank"><!--{$tag_list.name}--></a>
+              <!--{/iCMS}-->
+            </div>
+          </div>
+          <div class="widget widget_ui_posts">
+            <h3 class="title"><strong>特别推荐</strong></h3>
+            <ul class="posts-xs">
+              <!--{iCMS:article:list loop="true" row="7" pid="1" cid="$category.cid"}-->
+              <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                  <h2><!--{$article_list.title}--></h2>
+                  <p>
+                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                  </p>
+                </a>
+              </li>
+            <!--{/iCMS}-->
+            </ul>
+          </div>
+        </aside>
+    </section>
+    <script src="<!--{$article.hits.script}-->"></script>
+    <script>
+      window._bd_share_config = {
+        common : {
+          bdText : '<!--{$article.title}-->',
+          bdDesc : '刚刚看到这篇很不错的文章，特地分享给大家！',
+          bdUrl : '<!--{$article.url}-->?share',
+          bdPic : '<!--{$article.pic.url}-->',
+          "bdMini": "2",
+          "bdMiniList": false,
+          "bdStyle": "0",
+          "bdSize": "24"
+        },
+        share:[{
+            bdCustomStyle: '<!--{$site.urls.tpl}-->/theme/share.css'
+        }],
+        image: {
+            tag: 'bdshare',
+            "viewList": ["qzone", "tsina", "weixin", "tqq", "sqq", "renren", "douban"],
+            "viewText": " ",
+            "viewSize": "16"
+        }
+      }
+      //以下为js加载部分
+      with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+    <!--{include file="./footer.htm"}-->
+  </body>
+</html>

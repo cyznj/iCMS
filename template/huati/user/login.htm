@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><!--{if $user}-->绑定已有用户<!--{else}-->用户登录<!--{/if}--> <!--{$site.title}-->_<!--{$site.seotitle}--></title>
+    <meta name="keywords" content="<!--{$site.keywords}-->" />
+    <meta name="description" content="<!--{$site.description}-->"/>
+    <meta name="mobile-agent" content="format=html5;url=<!--{$site.url}-->"/>
+    <!--{iCMS:public:ui}-->
+    <link rel="stylesheet" href="<!--{$site.urls.ui}-->/iCMS.loginreg-6.0.0.css" type="text/css" />
+    <script>
+    $(function(){
+      <!--{if $user}-->
+      iCMS.user.OPENID = <!--{$user|json_encode}-->;
+      <!--{/if}-->
+      iCMS.user.login("#iCMS-login-page",function(b){
+        iCMS.tip(b, '<i class="fa fa-check-circle" style="color: #33B800;"></i>');
+      });
+    })
+    </script>
+  </head>
+  <body class="iCMS_login_wrap">
+    <div class="login_wrap">
+      <div class="logo"> <a href="<!--{$site.url}-->" class="iCMS fl" title="<!--{$site.title}-->"><!--{$site.title}--></a> </div>
+      <div class="content">
+        <div class="main-col">
+          <h1><!--{if $user}-->绑定已有用户<!--{else}-->用户登录<!--{/if}--></h1>
+          <div class="rl_center">
+            <div id="iCMS-login-page" class="rl_form">
+              <div class="lg_name"> <span>用户名：</span>
+                <input type="text" placeholder="邮箱 或 昵称" name="uname" class="iCMS_login_uname text">
+              </div>
+              <div class="err_uname"><span><i class="fa fa-minus-circle"></i> 请输入登录名</span></div>
+              <div class="clear"></div>
+              <div class="lg_pass">
+                <span>密码：</span><input type="password" value="" name="pass" class="iCMS_login_pass text">
+              </div>
+              <div class="err_pass"><span><i class="fa fa-minus-circle"></i> 请输入密码</span></div>
+              <div class="clear"></div>
+              <!--{if $iCMS.CONFIG.user.loginseccode }-->
+              <div class="lg_check"><span>验证码：</span>
+                <input type="text" maxlength="4" name="seccode" class="iCMS_login_seccode iCMS_seccode">
+                <img src="<!--{iCMS:router url='/api/public/seccode'}-->" alt="验证码" class="iCMS_seccode_img r3"/>
+                <a href="javascript:;" class="iCMS_seccode_text" style="float: none">换一张</a>
+              </div>
+              <div class="err_seccode"><span><i class="fa fa-minus-circle"></i> 请输入验证码</span></div>
+              <!--{/if}-->
+              <div class="clear"></div>
+              <div class="lg_remember">
+                <label><input type="checkbox" value="1" name="remember" class="iCMS_login_remember check" checked="checked"><span>记住我（两周免登录）</span></label>
+              </div>
+              <div class="clear"></div>
+              <div class="lg_login">
+                <button class="submit iCMS_login_btn"></button>
+                <a href="<!--{$iCMS.SAPI}-->&do=findpwd">忘记密码？</a>
+              </div>
+              <div class="ot_login">
+                <span>您也可以用以下方式登录：</span>
+                <div class="ot_btn">
+                  <!--{if $iCMS.CONFIG.open.QQ.enable }-->
+                  <a href="<!--{iCMS:router url='/api/user/login/qq'}-->" class="login_qq"></a>
+                  <!--{/if}-->
+                  <!--{if $iCMS.CONFIG.open.WB.enable }-->
+                  <a href="<!--{iCMS:router url='/api/user/login/wb'}-->" class="login_wb"></a>
+                  <!--{/if}-->
+                  <!--{if $iCMS.CONFIG.open.WX.enable }-->
+                  <a href="<!--{iCMS:router url='/api/user/login/wx'}-->" class="login_wx"></a>
+                  <!--{/if}-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-col">
+          <div class="lg_reg">
+            <h2>注册</h2>
+            <span style="margin-left:40px;">还没有账号？</span>
+            <a class="reg" href="<!--{iCMS:router url='/api/user/register'}-->"></a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--{include file="{iTPL}/footer.htm"}-->
+  </body>
+</html>

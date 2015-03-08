@@ -1,0 +1,60 @@
+        <aside class="speedbar-wrap">
+          <div class="speedbar">
+            <ul class="speedbar-menu">
+              <!--{iCMS:category:list loop="true" stype='sub' row="5" cid="4" appid="4"}-->
+              <li><a target="_blank" href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a></li>
+              <!--{/iCMS}-->
+              <!--{iCMS:tag:list loop="true" row="5" orderby="hot"}-->
+              <li><a href="<!--{$tag_list.url}-->"><!--{$tag_list.name}--></a></li>
+              <!--{/iCMS}-->
+            </ul>
+            <div class="speedbar-weixin">
+              <h5>微信关注“<!--{$site.name}-->”<br><!--{$site.description}--></h5>
+              <img src="<!--{iCMS:router url='/api' query='app=public&do=qrcode&url='}--><!--{$site.url}-->" alt="">
+            </div>
+          </div>
+        </aside>
+        <aside class="sidebar">
+          <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
+            <h3 class="title"><strong>热门文章</strong></h3>
+            <ul class="posts-xs">
+              <!--{iCMS:article:list loop="true" row="6" orderby="hot"}-->
+              <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                  <h2><!--{$article_list.title}--></h2>
+                  <p>
+                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                  </p>
+                </a>
+              </li>
+            <!--{/iCMS}-->
+            </ul>
+          </div>
+          <div class="widget widget_ui_tags">
+            <h3 class="title"><strong>热门标签</strong></h3>
+            <div class="items">
+              <!--{iCMS:tag:list loop="true" row="30" orderby="hot"}-->
+              <a href="<!--{$tag_list.url}-->" target="_blank"><!--{$tag_list.name}--></a>
+              <!--{/iCMS}-->
+            </div>
+          </div>
+          <div class="widget widget_ui_posts">
+            <h3 class="title"><strong>特别推荐</strong></h3>
+            <ul class="posts-xs">
+              <!--{iCMS:article:list loop="true" row="7" pid="1" cid="$category.cid"}-->
+              <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                  <h2><!--{$article_list.title}--></h2>
+                  <p>
+                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                  </p>
+                </a>
+              </li>
+            <!--{/iCMS}-->
+            </ul>
+          </div>
+        </aside>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title><!--{$category.name}-->--<!--{$site.seotitle}--></title>
+    <meta name="keywords" content="<!--{$category.keywords}-->" />
+    <meta name="description" content="<!--{$category.description}-->"/>
+    <meta name="mobile-agent" content="format=xhtml;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
+    <meta name="mobile-agent" content="format=html5;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
+    <!--{iCMS:public:ui}-->
+  </head>
+  <body class="home blog" data-navto="home">
+    <!--{include file="./header.htm"}-->
+    <section class="container">
+      <header class="title">
+        <h1><a href="<!--{$category.url}-->"><!--{$category.name}--></a></h1>
+        <div class="share bdsharebuttonbox">
+          分享到：<a class="bds_qzone" data-cmd="qzone"></a>
+          <a class="bds_tsina" data-cmd="tsina"></a>
+          <a class="bds_weixin bdsm" data-cmd="weixin"></a>
+          <a class="bds_tqq" data-cmd="tqq"></a>
+          <a class="bds_sqq bdsm" data-cmd="sqq"></a>
+          <a class="bds_renren" data-cmd="renren"></a>
+          <a class="bds_douban" data-cmd="douban"></a>
+          <span class="bds_count" data-cmd="count"></span>
+        </div>
+      </header>
+      <div class="ranking">
+        <ul>
+          <!--{iCMS:article:list loop="true" pic="true" row="10" startdate="-30 day"}-->
+          <li class="item-<!--{$article_list.rownum}-->">
+            <a target="_blank" href="<!--{$article_list.url}-->" target="_blank">
+            <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+            <h2><!--{$article_list.title}--></h2>
+            <p>阅读(<!--{$article_list.hits.count}-->)</p>
+            </a>
+          </li>
+          <!--{/iCMS}-->
+        </ul>
+      </div>
+    </section>
+    <script>
+      window._bd_share_config = {
+        common : {
+          bdText : '<!--{$article.title}-->',
+          bdDesc : '刚刚看到这篇很不错的文章，特地分享给大家！',
+          bdUrl : '<!--{$article.url}-->?share',
+          bdPic : '<!--{$article.pic.url}-->',
+          "bdMini": "2",
+          "bdMiniList": false,
+          "bdStyle": "0",
+          "bdSize": "24"
+        },
+        share:[{
+            bdCustomStyle: '<!--{$site.urls.tpl}-->/theme/share.css'
+        }],
+        image: {
+            tag: 'bdshare',
+            "viewList": ["qzone", "tsina", "weixin", "tqq", "sqq", "renren", "douban"],
+            "viewText": " ",
+            "viewSize": "16"
+        }
+      }
+      //以下为js加载部分
+      with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+    <!--{include file="./footer.htm"}-->
+  </body>
+</html>

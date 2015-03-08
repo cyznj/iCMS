@@ -1,0 +1,97 @@
+<!--{if $comment_vars.display=="iframe"}-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title><!--{$comment_vars.title}-->评论_<!--{$site.title}-->_<!--{$site.seotitle}--></title>
+		<!--{iCMS:public:ui script="false"}-->
+		<script>var iCMS = window.top.iCMS;</script>
+	</head>
+	<body class="iCMS-comment-page">
+<!--{/if}-->
+		<div class="iCMS_comment_form_wrap">
+			<div id="iCMS-cmt-profile">
+				<!--{include file="iCMS://user/menu.htm"}-->
+			</div>
+			<div id="iCMS-cmt-login">
+				<a href="<!--{iCMS:router url='/api/user/login'}-->" class="iCMS_user_login" title="登录"><i class="fa fa-user"></i> 登录</a>
+				<a href="<!--{iCMS:router url='/api/user/register'}-->" target="_blank"><i class="fa fa-heart"></i> 注册</a>
+			</div>
+			<div class="alert alert-warning" role="alert">
+				<i class="fa fa-warning "></i> 请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论！
+			</div>
+			<div class="iCMS_cmt_editor">
+				<textarea class="iCMS_editor_text commentApp-textarea form-control" placeholder="写下你的评论…"></textarea>
+			</div>
+            <div class="clearfix"></div>
+			<div class="iCMS_cmt_command">
+              <!--{if $iCMS.CONFIG.comment.seccode }-->
+              <div class="iCMS_cmt_seccode">
+                <input type="text" maxlength="4" name="seccode" class="iCMS_seccode commentApp-seccode form-control" placeholder="验证码">
+                <img src="<!--{iCMS:router url='/api/public/seccode'}-->" alt="验证码" class="iCMS_seccode_img r3" title="点击更换验证码图片"/>
+              </div>
+              <!--{/if}-->
+				<button class="btn btn-primary cmt-add" type="submit"><i class="fa fa-check"></i> 评 论</button>
+				<a href="javascript:;" class="cmt-cancel">取 消</a>
+			</div>
+            <div class="clearfix mb10"></div>
+		</div>
+		<script>
+		$(function(){
+            iCMS.comment.seccode = iCMS.config.COMMENT.seccode;
+            <!--{if $comment_vars.display=="iframe"}-->
+            iCMS.comment.iframe_height('form');
+            <!--{/if}-->
+            if (iCMS.user_status) {
+				window.setTimeout(function() {
+            		iCMS.user.set_info(iCMS.user.info,$(".iCMS_user_home"));
+                }, 1000);
+                $("#iCMS-cmt-login").hide();
+                $("#iCMS-cmt-profile").show();
+                iCMS.hover($(".iCMS_user_home"),20,-10);
+            }
+            $(document).on("click", '.iCMS_user_logout', function(event) {
+                event.preventDefault();
+                iCMS.user.logout();
+                return false;
+            }).on("click", '.iCMS_user_login', function(event) {
+                event.preventDefault();
+                iCMS.LoginBox(true);
+                return false;
+            });
+			// 取消
+			$('.cmt-cancel').click(function(event) {
+				var pp = $(this).parent().parent();
+                pp.removeClass('expanded');
+                $('.commentApp-textarea', pp).val("").focus();
+			});
+            //提交评论
+            $('.cmt-add').click(function(event) {
+        		var param =<!--{$comment_vars.param|json_encode}-->;
+                event.preventDefault();
+                iCMS.comment.addnew(this,param,function(c){
+                	var doc = window.top.document;
+                    if (c.code) {
+                    	var list_iframe = $(".commentApp-list-iframe",doc);
+                    	if(list_iframe.length){
+	                    	list_iframe_src =list_iframe.attr('src');
+	                    	if(list_iframe_src){
+	                    		list_iframe.attr('src', list_iframe_src+'&pn=999999');
+	                    	}
+                    	}
+                    	var list_box = $(".commentApp-list",doc);
+                    	if(list_box.length){
+                    		var pagenav = $(".commentApp-pagenav-api",doc);
+                    		iCMS.comment.page(999999,pagenav);
+                    	}
+                    }else{
+                        iCMS.alert(c.msg);
+                    }
+                })
+            });
+		})
+		</script>
+<!--{if $comment_vars.display=="iframe"}-->
+	</body>
+</html>
+<!--{/if}-->
