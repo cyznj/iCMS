@@ -7,6 +7,13 @@
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$site.urls.mobile}-->">
     <!--{iCMS:public:ui}-->
+      <script>
+          $(function () {
+              $('.carousel').carousel({
+                  interval: 3000
+              });
+          })
+      </script>
   </head>
   <body class="home blog" data-navto="home">
     <!--{include file="./header.htm"}-->
@@ -14,6 +21,37 @@
       <div class="content-wrap">
         <div class="content excerpts">
           <h3 class="title"><small class="pull-right">24小时发布奇闻趣事：7篇 &nbsp; &nbsp; 7天更新：16篇</small><strong>最新发布</strong></h3>
+            <div id="index_carousel" class="carousel slide" data-ride="carousel">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#index_carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#index_carousel" data-slide-to="1"></li>
+                    <li data-target="#index_carousel" data-slide-to="2"></li>
+                    <li data-target="#index_carousel" data-slide-to="3"></li>
+                    <li data-target="#index_carousel" data-slide-to="4"></li>
+                    <li data-target="#index_carousel" data-slide-to="5"></li>
+                    <li data-target="#index_carousel" data-slide-to="6"></li>
+                    <li data-target="#index_carousel" data-slide-to="7"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <!--{iCMS:article:list loop="true" pic="true" row="8" orderby="hot"}-->
+                    <!--{if $article_list}-->
+                    <div class="item <!--{if $article_list.first}-->active<!--{/if}-->">
+                        <a href="<!--{$article_list.url}-->">
+                            <img src="<!--{$article_list.pic.url}-->" alt="<!--{$article_list.title}-->"/>
+                            <div class="carousel-caption">
+                                <span><!--{$article_list.title}--></span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--{/if}-->
+                    <!--{/iCMS}-->
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#index_carousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#index_carousel" data-slide="next">&rsaquo;</a>
+            </div>
           <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10"}-->
             <article class="excerpt">
               <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
