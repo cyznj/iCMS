@@ -947,3 +947,8 @@ border: none;
 /*@media (min-width:1200px) {
   .container {max-width: 1280px;width: 1260px;}
 }*/
+.ranking .lazy.thumb{
+    width:140px;
+    height:140px;
+    margin-right:50px
+}
