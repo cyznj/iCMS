@@ -952,3 +952,10 @@ border: none;
     height:140px;
     margin-right:50px
 }
+.sidebar img:hover,.excerpt img:hover {
+    transition: All 0.7s ease;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+}
