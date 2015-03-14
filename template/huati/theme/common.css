@@ -735,6 +735,7 @@ border-radius: 4px; border: solid 1px #eaeaea }
     z-index: 15;
     text-align: center;
     list-style: none;
+    width:30%
 }
 #index_carousel .carousel-indicators li {
     display: inline-block;
