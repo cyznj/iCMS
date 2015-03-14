@@ -15,6 +15,36 @@
           </div>
         </aside>
         <aside class="sidebar">
+          <div class="widget widget_ui_tags">
+            <h3 class="title"><strong>最新评论</strong></h3>
+              <ul>
+                  <!--{iCMS:comment:list loop="true" page="true" row="5" by="DESC" vars="$comment_vars"}-->
+                  <li class="item-<!--{$article_list.id}-->">
+                      <a title="<!--{$comment_list.user.name}-->"
+                         data-tip="<!--{$tip_selector}--><!--{$comment_list.userid}-->"
+                         style="display:block;border-bottom:1px solid #eee"
+                         href="<!--{$comment_list.user.url}-->">
+                          <img src="<!--{$comment_list.user.avatar}-->" class="img-circle"
+                               style="width:140px;height:140px"
+                               onerror="iCMS.user.noavatar(this);">
+                          <span class="desc" style="background:#FF5E52;color:#fff;padding:0px"><!--{$comment_list.user.name}--></span>
+                          <span class="date">在(<!--{$comment_list.addtime|format_date}-->)说:</span>
+                      </a>
+                      $comment_list.iid
+                      <!--{iCMS:article:list loop="true" row="1" id="$comment_list.iid"}-->
+                      <a href="<!--{$article_list.url}-->">
+                          <div class="desc" style="margin-left:50px"><!--{$comment_list.content}--></div>
+                      </a>
+                      <!--{iCMSelse}-->
+                      <div class="desc" style="margin-left:50px">很抱歉，此内容已不存在！</div>
+                      <!--{/iCMS}-->
+
+                  </li>
+                  <!--{iCMSelse}-->
+                  <div class="iCMS_no_comment"><i class="fa fa-ban"></i>暂无评论...</div>
+                  <!--{/iCMS}-->
+              </ul>
+          </div>
           <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
             <h3 class="title"><strong>热门文章</strong></h3>
             <ul class="posts-xs">
