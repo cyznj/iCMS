@@ -57,4 +57,14 @@
             <!--{/iCMS}-->
             </ul>
           </div>
+            <div class="widget widget_ui_tags">
+                <h3 class="title"><strong>友情链接</strong></h3>
+                <ul class="posts-xs">
+                    <div class="items">
+                        <!--{iCMS:link loop='true'}-->
+                        <a target="_blank" href="<!--{$link.url}-->"><img src="<!--{$link.logo}-->"><!--{$link.name}--></a>
+                        <!--{/iCMS}-->
+                    </div>
+                </ul>
+            </div>
         </aside>
