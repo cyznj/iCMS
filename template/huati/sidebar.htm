@@ -1,100 +1,101 @@
-        <aside class="speedbar-wrap">
-          <div class="speedbar">
-            <ul class="speedbar-menu">
-              <!--{iCMS:category:list loop="true" stype='sub' row="5" cid="4" appid="4"}-->
-              <li><a target="_blank" href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a></li>
-              <!--{/iCMS}-->
-              <!--{iCMS:tag:list loop="true" row="5" orderby="hot"}-->
-              <li><a href="<!--{$tag_list.url}-->"><!--{$tag_list.name}--></a></li>
-              <!--{/iCMS}-->
-            </ul>
-            <div class="speedbar-weixin">
-              <h5>微信关注“<!--{$site.name}-->”<br><!--{$site.description}--></h5>
-              <img src="<!--{iCMS:router url='/api' query='app=public&do=qrcode&url='}--><!--{$site.url}-->" alt="">
-            </div>
-          </div>
-        </aside>
-        <aside class="sidebar">
-          <div class="widget widget_ui_tags">
-            <h3 class="title"><strong>最新评论</strong></h3>
-              <ul>
-                  <!--{iCMS:comment:list loop="true" page="true" row="5" by="DESC" vars="$comment_vars"}-->
-                  <li class="item-<!--{$article_list.id}-->">
-                      <a title="<!--{$comment_list.user.name}-->"
-                         data-tip="<!--{$tip_selector}--><!--{$comment_list.userid}-->"
-                         style="display:block;border-bottom:1px solid #eee"
-                         href="<!--{$comment_list.user.url}-->">
-                          <img src="<!--{$comment_list.user.avatar}-->" class="img-circle"
-                               style="width:140px;height:140px"
-                               onerror="iCMS.user.noavatar(this);">
-                          <span class="desc" style="background:#FF5E52;color:#fff;padding:0px"><!--{$comment_list.user.name}--></span>
-                          <span class="date">在(<!--{$comment_list.addtime|format_date}-->)说:</span>
-                      </a>
-                      $comment_list.iid
-                      <!--{iCMS:article:list loop="true" row="1" id="$comment_list.iid"}-->
-                      <a href="<!--{$article_list.url}-->">
-                          <div class="desc" style="margin-left:50px"><!--{$comment_list.content}--></div>
-                      </a>
-                      <!--{iCMSelse}-->
-                      <div class="desc" style="margin-left:50px">很抱歉，此内容已不存在！</div>
-                      <!--{/iCMS}-->
+<aside class="speedbar-wrap">
+    <div class="speedbar">
+        <ul class="speedbar-menu">
+            <!--{iCMS:category:list loop="true" stype='sub' row="5" cid="8" appid="4"}-->
+            <li><a target="_blank" href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a></li>
+            <!--{/iCMS}-->
+            <!--{iCMS:tag:list loop="true" row="5" orderby="hot"}-->
+            <li><a href="<!--{$tag_list.url}-->"><!--{$tag_list.name}--></a></li>
+            <!--{/iCMS}-->
+        </ul>
+        <div class="speedbar-weixin">
+            <h5>微信关注“<!--{$site.name}-->”<br><!--{$site.description}--></h5>
+            <img src="<!--{iCMS:router url='/api' query='app=public&do=qrcode&url='}--><!--{$site.url}-->" alt="">
+        </div>
+    </div>
+</aside>
+<aside class="sidebar">
+    <div class="widget widget_ui_tags">
+        <h3 class="title"><strong>最新评论</strong></h3>
+        <ul>
+            <!--{iCMS:comment:list loop="true" page="true" row="6" by="DESC" vars="$comment_vars"}-->
+            <li class="item-<!--{$article_list.id}-->">
+                <a title="<!--{$comment_list.user.name}-->"
+                   data-tip="<!--{$tip_selector}--><!--{$comment_list.userid}-->"
+                   style="display:block;border-bottom:1px solid #eee"
+                   href="<!--{$comment_list.user.url}-->">
+                    <img src="<!--{$comment_list.user.avatar}-->" class="img-circle"
+                         style="width:36px;height:36px"
+                         onerror="iCMS.user.noavatar(this);">
+                    <span class="desc" style="background:#FF5E52;color:#fff;padding:0px"><!--{$comment_list.user.name}--></span>
 
-                  </li>
-                  <!--{iCMSelse}-->
-                  <div class="iCMS_no_comment"><i class="fa fa-ban"></i>暂无评论...</div>
-                  <!--{/iCMS}-->
-              </ul>
-          </div>
-          <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
-            <h3 class="title"><strong>热门文章</strong></h3>
-            <ul class="posts-xs">
-              <!--{iCMS:article:list loop="true" row="6" orderby="hot"}-->
-              <li class="item-<!--{$article_list.id}-->">
-                <a target="_blank" href="<!--{$article_list.url}-->">
-                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
-                  <h2><!--{$article_list.title}--></h2>
-                  <p>
-                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
-                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
-                  </p>
+                    <span class="date">在(<!--{$comment_list.addtime|format_date}-->)说:</span>
+
                 </a>
-              </li>
+                <!--{iCMS:article:list loop="true" row="1" id="$comment_list.iid"}-->
+                <a href="<!--{$article_list.url}-->">
+                    <div class="desc" style="margin-left:50px"><!--{$comment_list.content}--></div>
+                </a>
+                <!--{iCMSelse}-->
+                <div class="desc" style="margin-left:50px">很抱歉，此内容已不存在！</div>
+                <!--{/iCMS}-->
+            </li>
+            <!--{iCMSelse}-->
+            <div class="iCMS_no_comment"><i class="fa fa-ban"></i>暂无评论...</div>
             <!--{/iCMS}-->
-            </ul>
-          </div>
-          <div class="widget widget_ui_tags">
-            <h3 class="title"><strong>热门标签</strong></h3>
+        </ul>
+        </ul>
+    </div>
+    <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
+        <h3 class="title"><strong>热门文章</strong></h3>
+        <ul class="posts-xs">
+            <!--{iCMS:article:list loop="true" row="6" orderby="hot"}-->
+            <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                    <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                    <h2><!--{$article_list.title}--></h2>
+                    <p>
+                        <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                        <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                    </p>
+                </a>
+            </li>
+            <!--{/iCMS}-->
+        </ul>
+    </div>
+    <div class="widget widget_ui_tags">
+        <h3 class="title"><strong>热门标签</strong></h3>
+        <div class="items">
+            <!--{iCMS:tag:list loop="true" row="30" orderby="hot"}-->
+            <a href="<!--{$tag_list.url}-->" target="_blank"><!--{$tag_list.name}--></a>
+            <!--{/iCMS}-->
+        </div>
+    </div>
+    <div class="widget widget_ui_posts">
+        <h3 class="title"><strong>特别推荐</strong></h3>
+        <ul class="posts-xs">
+            <!--{iCMS:article:list loop="true" row="3" pid="2"}-->
+            <li class="item-<!--{$article_list.id}-->">
+                <a target="_blank" href="<!--{$article_list.url}-->">
+                    <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+                    <h2><!--{$article_list.title}--></h2>
+                    <p>
+                        <time><!--{$article_list.pubdate|date:'m-d'}--></time>
+                        <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
+                    </p>
+                </a>
+            </li>
+            <!--{/iCMS}-->
+        </ul>
+    </div>
+    <div class="widget widget_ui_tags">
+        <h3 class="title"><strong>友情链接</strong></h3>
+        <ul class="posts-xs">
             <div class="items">
-              <!--{iCMS:tag:list loop="true" row="30" orderby="hot"}-->
-              <a href="<!--{$tag_list.url}-->" target="_blank"><!--{$tag_list.name}--></a>
-              <!--{/iCMS}-->
+                <!--{iCMS:link loop='true'}-->
+                <a target="_blank" href="<!--{$link.url}-->"><img src="<!--{$link.logo}-->" alt=“<!--{$link.name}-->”><!--{$link.name}--></a>
+                <!--{/iCMS}-->
             </div>
-          </div>
-          <div class="widget widget_ui_posts">
-            <h3 class="title"><strong>特别推荐</strong></h3>
-            <ul class="posts-xs">
-              <!--{iCMS:article:list loop="true" row="7" pid="1" cid="$category.cid"}-->
-              <li class="item-<!--{$article_list.id}-->">
-                <a target="_blank" href="<!--{$article_list.url}-->">
-                  <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
-                  <h2><!--{$article_list.title}--></h2>
-                  <p>
-                    <time><!--{$article_list.pubdate|date:'m-d'}--></time>
-                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span>
-                  </p>
-                </a>
-              </li>
-            <!--{/iCMS}-->
-            </ul>
-          </div>
-            <div class="widget widget_ui_tags">
-                <h3 class="title"><strong>友情链接</strong></h3>
-                <ul class="posts-xs">
-                    <div class="items">
-                        <!--{iCMS:link loop='true'}-->
-                        <a target="_blank" href="<!--{$link.url}-->"><img src="<!--{$link.logo}-->" alt="<!--{$link.name}-->"><!--{$link.name}--></a>
-                        <!--{/iCMS}-->
-                    </div>
-                </ul>
-            </div>
-        </aside>
+        </ul>
+    </div>
+</aside>
