@@ -21,7 +21,7 @@
     <section class="container">
       <div class="content-wrap">
         <div class="content excerpts">
-          <h3 class="title"><small class="pull-right">24小时发布奇闻趣事：7篇 &nbsp; &nbsp; 7天更新：16篇</small><strong>最新发布</strong></h3>
+          <h3 class="title"><small class="pull-right">记忆像是倒在掌心的水，不论你摊开还是紧握，终究还是会从指缝间流淌干净。</small><strong>最新发布</strong></h3>
             <div id="index_carousel" class="carousel slide" data-ride="carousel">
                 <!-- 轮播（Carousel）指标 -->
                 <ol class="carousel-indicators">
@@ -53,13 +53,24 @@
                 <a class="carousel-control left" href="#index_carousel" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#index_carousel" data-slide="next">&rsaquo;</a>
             </div>
-          <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10"}-->
+          <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10" user="true"}-->
             <article class="excerpt">
               <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
                 <img class="thumb" src="<!--{$article_list.pic.url}-->"/>
               </a>
               <h2>
                 <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>
+
+                  <a title="<!--{$article_list.user.name}-->"
+                     data-tip="<!--{$tip_selector}--><!--{$article_list.userid}-->"
+                     style="display:block;border-bottom:1px solid #eee"
+                     href="<!--{$article_list.user.url}-->">
+                      <img src="<!--{$article_list.user.avatar}-->" class="img-circle"
+                           style="width:36px;height:36px"
+                           onerror="iCMS.user.noavatar(this);">
+                      <span class="desc" style="background:#FF5E52;color:#fff;padding:0px;font-size:16px;"><!--{$article_list.user.name}--></span>
+
+                  </a>
               </h2>
               <p class="note"><!--{$article_list.description}--></p>
               <footer data-param='<!--{$article_list.param|json_encode}-->'>

@@ -57,10 +57,12 @@ body { margin: 98px 0 0; font-size: 14px; line-height: 20px; color: #555; overfl
 * ====================================================
 */
 .logo { margin: 0; width: 158px; float: left; }
-.logo a { display: block; overflow: hidden; height: 78px; line-height: 300px; color: #fff; background-color: #FF5E52; background-image: url(image/logo2.png); background-repeat: no-repeat; background-position: 20px 10px; -webkit-transition: background-position linear .15s; -moz-transition: background-position linear .15s; transition: background-position linear .15s }
+.logo a { display: block; overflow: hidden; height: 78px; line-height: 300px; color: #fff; background-color: #FF5E52; background-image: url(image/logo2.png); background-repeat: no-repeat; background-position: 10px 0px; -webkit-transition: background-position linear .15s; -moz-transition: background-position linear .15s; transition: background-position linear .15s }
 /* background:#FF5E52 url(image/logo.png) no-repeat 24px 22px;
 */
-.logo a:hover { background-position: 20px -54px; }
+.logo span{color:white;position:absolute;left:15px;top:40px;font-size:20px;}
+.logo a:hover { background-position: 10px -54px; }
+
 .feeds { }
 .feeds-title { margin: 0 0 7px -15px; padding: 0; color: #999; text-align: center; }
 .feed { }

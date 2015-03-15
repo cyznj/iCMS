@@ -1,9 +1,10 @@
 <header class="header">
     <div class="container">
-      <h1 class="logo">
+      <h1 class="logo" onmouseover="$(this).find('span').css('display','')" onmouseout="$(this).find('span').css('display','none')">
         <a href="<!--{$site.url}-->" title="<!--{$site.seotitle}-->">
           <!--{$site.name}-->
         </a>
+        <span style="display:none">微锤子等你！</span>
       </h1>
       <ul class="nav">
         <li class="navto-home active" id="c0">
