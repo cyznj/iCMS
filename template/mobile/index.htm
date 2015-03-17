@@ -4,6 +4,7 @@
     <title><!--{$site.title}-->_<!--{$site.seotitle}--></title>
     <meta name="keywords" content="<!--{$site.keywords}-->" />
     <meta name="description" content="<!--{$site.description}-->"/>
+    <meta property="qc:admins" content="152375340763126263757" />
     <!--{iCMS:public:ui}-->
     <script src="<!--{$site.urls.ui}-->/swipe-1.0.js"></script>
     <script>
@@ -43,7 +44,7 @@
       <!--{/if}-->
       <div class="clearfix mb10"></div>
       <div id="iCMS-article-list" class="article_list">
-        <!--{iCMS:article:list loop="true" page="true" user="true" row="3"}-->
+        <!--{iCMS:article:list loop="true" page="true" user="true" row="30"}-->
         <div class="panel panel-default">
           <div class="panel-heading">
             <a href="<!--{$article_list.category.url}-->" target="_blank" class="category">
@@ -56,7 +57,7 @@
           <!--{if $article_list.pic.url}-->
           <div class="panel-thumb">
             <a href="<!--{$article_list.url}-->" target="_blank">
-            <img class="lazy" data-src="<!--{$article_list.pic.url}-->" src="<!--{$site.urls.ui}-->/img/img-default.png" width="100%">
+            <img class="lazy" data-src="<!--{$article_list.pic.url}-->" src="<!--{$site.urls.ui}-->/img/img-default.png?version123" width="100%">
             </a>
           </div>
           <!--{/if}-->

@@ -4,23 +4,73 @@
     <title><!--{$site.title}-->--<!--{$site.seotitle}--></title>
     <meta name="keywords" content="<!--{$site.keywords}-->" />
     <meta name="description" content="<!--{$site.description}-->"/>
+    <meta property="qc:admins" content="152375340763126263757" />
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$site.urls.mobile}-->">
     <!--{iCMS:public:ui}-->
+      <script>
+          $(function () {
+              $('.carousel').carousel({
+                  interval: 2000
+              });
+          })
+      </script>
   </head>
   <body class="home blog" data-navto="home">
     <!--{include file="./header.htm"}-->
     <section class="container">
       <div class="content-wrap">
         <div class="content excerpts">
-          <h3 class="title"><small class="pull-right">24小时发布奇闻趣事：7篇 &nbsp; &nbsp; 7天更新：16篇</small><strong>最新发布</strong></h3>
-          <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10"}-->
+          <h3 class="title"><small class="pull-right">记忆像是倒在掌心的水，不论你摊开还是紧握，终究还是会从指缝间流淌干净。</small><strong>最新发布</strong></h3>
+            <div id="index_carousel" class="carousel slide" data-ride="carousel">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#index_carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#index_carousel" data-slide-to="1"></li>
+                    <li data-target="#index_carousel" data-slide-to="2"></li>
+                    <li data-target="#index_carousel" data-slide-to="3"></li>
+                    <li data-target="#index_carousel" data-slide-to="4"></li>
+                    <li data-target="#index_carousel" data-slide-to="5"></li>
+                    <li data-target="#index_carousel" data-slide-to="6"></li>
+                    <li data-target="#index_carousel" data-slide-to="7"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <!--{iCMS:article:list loop="true" pic="true" row="8" orderby="hot"}-->
+                    <!--{if $article_list}-->
+                    <div class="item <!--{if $article_list.first}-->active<!--{/if}-->">
+                        <a href="<!--{$article_list.url}-->">
+                            <img src="<!--{$article_list.pic.url}-->" alt="<!--{$article_list.title}-->"/>
+                            <div class="carousel-caption">
+                                <span><!--{$article_list.title}--></span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--{/if}-->
+                    <!--{/iCMS}-->
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#index_carousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#index_carousel" data-slide="next">&rsaquo;</a>
+            </div>
+          <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10" user="true"}-->
             <article class="excerpt">
               <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
                 <img class="thumb" src="<!--{$article_list.pic.url}-->"/>
               </a>
               <h2>
                 <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>
+
+                  <a title="<!--{$article_list.user.name}-->"
+                     data-tip="<!--{$tip_selector}--><!--{$article_list.userid}-->"
+                     style="display:block;border-bottom:1px solid #eee"
+                     href="<!--{$article_list.user.url}-->">
+                      <img src="<!--{$article_list.user.avatar}-->" class="img-circle"
+                           style="width:36px;height:36px"
+                           onerror="iCMS.user.noavatar(this);">
+                      <span class="desc" style="background:#FF5E52;color:#fff;padding:0px;font-size:16px;"><!--{$article_list.user.name}--></span>
+
+                  </a>
               </h2>
               <p class="note"><!--{$article_list.description}--></p>
               <footer data-param='<!--{$article_list.param|json_encode}-->'>

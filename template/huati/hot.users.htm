@@ -29,7 +29,7 @@
           <!--{iCMS:user:list loop="true" row="30"}-->
               <li>
                 <a href="<!--{$article_list.url}-->">
-                <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$user_list.avatar}-->"/>
+                <img class="lazy thumb img-circle" style="width:140px;height:140px"  src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$user_list.avatar}-->" onerror="iCMS.user.noavatar(this);"/>
                 </a>
                 <!--{$user_list.at}-->
                 <a href="<!--{$user_list.url}-->">昵称：<!--{$user_list.nickname}--></a>
