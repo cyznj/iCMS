@@ -27,10 +27,10 @@ $lock_file = iPATH.'cache/install.lock';
 <html lang="zh-CN">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>iCMS V6 - 安装向导</title>
+		<title>cyznj V6 - 安装向导</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta content="iDreamSoft Inc." name="Copyright" />
+		<meta content="cyznj Inc." name="Copyright" />
 		<link href="../app/ui/common/bootstrap/2.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
 		<link href="../app/ui/common/bootstrap/2.3.2/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet"/>
 		<link href="../app/ui/common/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
@@ -148,7 +148,7 @@ $lock_file = iPATH.'cache/install.lock';
 	<body>
 		<div class="jumbotron masthead">
 			<div class="container">
-				<h1>iCMS V6</h1>
+				<h1>cyznj V6</h1>
 				<p>简洁、高效、开源的内容管理系统，让网站管理更高效、简单。</p>
 				<p>
 					<?php if(file_exists($lock_file)){ ?>

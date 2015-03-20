@@ -17,7 +17,7 @@ defined('iPHP') OR exit('What are you doing?');
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" /> -->
-<meta content="iDreamSoft Inc." name="Copyright" />
+<meta content="cyznj Inc." name="Copyright" />
 <link rel="stylesheet" href="./app/ui/common/bootstrap/2.3.2/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="./app/ui/common/bootstrap/2.3.2/css/bootstrap-responsive.min.css" type="text/css" />
 <link rel="stylesheet" href="./app/ui/common/bootstrap/2.3.2/css/datepicker.css" type="text/css" />
