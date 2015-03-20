@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
+<head>
     <title><!--{$category.name}-->_<!--{$site.title}-->_<!--{$site.seotitle}--></title>
-    <meta name="keywords" content="<!--{$category.keywords}-->" />
+    <meta name="keywords" content="<!--{$category.keywords}-->"/>
     <meta name="description" content="<!--{$category.description}-->"/>
     <!--{iCMS:public:ui}-->
-  </head>
-  <body class="iCMS-mobile">
-    <!--{include file="./navbar.htm"}-->
-    <div class="container">
-      <!--{iCMS:article:list pic="true" row="8" cid="$category.cid"}-->
-      <!--{if $article_list}-->
-      <div id="cat_carousel" class="carousel slide" data-ride="carousel">
-         <!-- 轮播（Carousel）指标 -->
-         <ol class="carousel-indicators">
+</head>
+<body class="iCMS-mobile">
+<!--{include file="./navbar.htm"}-->
+<div class="container">
+    <!--{iCMS:article:list pic="true" row="8" cid="$category.cid"}-->
+    <!--{if $article_list}-->
+    <div id="cat_carousel" class="carousel slide" data-ride="carousel">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
             <li data-target="#cat_carousel" data-slide-to="0" class="active"></li>
             <li data-target="#cat_carousel" data-slide-to="1"></li>
             <li data-target="#cat_carousel" data-slide-to="2"></li>
@@ -22,56 +22,69 @@
             <li data-target="#cat_carousel" data-slide-to="5"></li>
             <li data-target="#cat_carousel" data-slide-to="6"></li>
             <li data-target="#cat_carousel" data-slide-to="7"></li>
-         </ol>
-         <!-- 轮播（Carousel）项目 -->
-         <div class="carousel-inner" role="listbox">
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner" role="listbox">
             <!--{foreach key=key value=alist from="$article_list"}-->
-            <div class="item<!--{if $key=="0"}--> active<!--{/if}-->">
-               <a href="<!--{$alist.url}-->">
-                 <img src="<!--{$alist.pic.url}-->" alt="<!--{$alist.title}-->">
-                 <div class="carousel-caption">
-                  <h3><!--{$alist.title}--></h3>
-                 </div>
-              </a>
-            </div>
-            <!--{/foreach}-->
-         </div>
-         <!-- 轮播（Carousel）导航 -->
-         <a class="carousel-control left" href="#cat_carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-         <a class="carousel-control right" href="#cat_carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-      </div>
-      <!--{/if}-->
-      <div class="clearfix mb10"></div>
-      <div id="iCMS-article-list" class="article_list">
-        <h3 class="title"><span><!--{$category.name}--></span></h3>
-        <ul class="list">
-          <!--{iCMS:article:list loop="true" page="true" user="true" row="10" cid="$category.cid"}-->
-          <li class="full">
-            <a href="<!--{$article_list.url}-->">
-              <!--{if $article_list.pic.url}-->
-              <div class="thumb">
-                <img class="lazy" data-src="<!--{$article_list.pic.url}-->" src="<!--{$site.urls.ui}-->/img/img-default.png">
-              </div>
-              <!--{/if}-->
-              <h3><!--{$article_list.title}--></h3>
-              <p>
-                <!--{$article_list.description|cut:30:'...'}-->
-                <span class="count">
-                  <span class="label label-default"><i class="fa fa-comments"></i> <!--{$article_list.comment.count}--> </span>
-                </span>
-              </p>
+            <div class="item<!--{if $key==" 0
+            "}--> active<!--{/if}-->">
+            <a href="<!--{$alist.url}-->">
+                <img src="<!--{$alist.pic.url}-->" alt="<!--{$alist.title}-->">
+
+                <div class="carousel-caption">
+                    <h3><!--{$alist.title}--></h3>
+                </div>
             </a>
-          </li>
-          <!--{/iCMS}-->
-        </ul>
-      </div>
-      <div id="pages_next" class="hide">
-        <!--{$iCMS.PAGE.NEXT}-->
-      </div>
+        </div>
+        <!--{/foreach}-->
     </div>
-    <script>
-    iCMS.scrollLoad("#iCMS-article-list .list","li","#pages_next","<!--{$iCMS.PAGE.TOTAL}-->");
-    </script>
-    <!--{include file="./footer.htm"}-->
-  </body>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#cat_carousel" data-slide="prev"><span
+            class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="carousel-control right" href="#cat_carousel" data-slide="next"><span
+            class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+<!--{/if}-->
+<div class="clearfix mb10"></div>
+<div id="iCMS-article-list" class="article_list">
+    <h3 class="title"><span><!--{$category.name}--></span></h3>
+    <ul class="list">
+        <!--{iCMS:article:list loop="true" page="true" user="true" row="10" cid="$category.cid"}-->
+        <li class="full">
+            <a href="<!--{$article_list.url}-->">
+                <!--{if $article_list.pic.url}-->
+                <div class="thumb">
+                    <img class="lazy" data-src="<!--{$article_list.pic.url}-->"
+                         src="<!--{$site.urls.ui}-->/img/img-default.png">
+                </div>
+            </a>
+            <!--{/if}-->
+            <h3><!--{$article_list.title}--></h3>
+
+            <p>
+                <!--{$article_list.description|cut:10:'...'}-->
+                     <span class="count" data-param='<!--{$article_list.param|json_encode}-->'>
+                             <a href="javascript:;" style="background:#FF5E52;color:white;"
+                                class="post-like iCMS_article_do" data-param='{"do":"good"}'>
+                                 点赞(<!--{$article_list.good}-->)
+                             </a>
+                     </span>
+                     <span class="count">
+                          评论(<!--{$article_list.comment.count}-->)
+                          阅读(<!--{$article_list.hits.count}-->)
+                    </span>
+            </p>
+        </li>
+        <!--{/iCMS}-->
+    </ul>
+</div>
+<div id="pages_next" class="hide">
+    <!--{$iCMS.PAGE.NEXT}-->
+</div>
+</div>
+<script>
+    iCMS.scrollLoad("#iCMS-article-list .list", "li", "#pages_next", "<!--{$iCMS.PAGE.TOTAL}-->");
+</script>
+<!--{include file="./footer.htm"}-->
+</body>
 </html>
