@@ -19,3 +19,18 @@ RewriteRule ^api/([^\/]\w+)$             public/api.php?app=$1 [QSA,L]
 RewriteRule ^api/(\w+)/(\w+)$             public/api.php?app=$1&do=$2 [QSA,L]
 RewriteRule ^api/user/login/(\w+)$         public/api.php?app=user&do=login&sign=$1 [L]
 
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault A300
+ExpiresByType image/x-icon A300
+ExpiresByType application/x-javascript A300
+ExpiresByType text/css A300
+ExpiresByType image/gif A300
+ExpiresByType image/png A300
+ExpiresByType image/jpeg A300
+ExpiresByType text/plain A300
+ExpiresByType application/x-shockwave-flash A300
+ExpiresByType video/x-flv A300
+ExpiresByType application/pdf A300
+ExpiresByType text/html A300
+</IfModule>
