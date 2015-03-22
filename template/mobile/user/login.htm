@@ -36,6 +36,22 @@
     <div class="container">
       <div class="wrapper login_reg_wrapper" id="iCMS-login-page">
           <div class="logo"><a href="<!--{$site.url}-->"><img src="<!--{$site.urls.ui}-->/img/iCMS.logo-6.0.png" width="180"/></a></div>
+          <!--{if !$user}-->
+          <div class="open-btn">
+              <h3 class="gray mb10">您也可以用以下方式登录：</h3>
+              <!--{if $iCMS.CONFIG.open.QQ.enable }-->
+              <a class="btn btn-primary btn-sm" href="<!--{iCMS:router url='/api/user/login/qq'}-->"><i class="fa fa-qq"></i> QQ 登录</a>
+              <!--{/if}-->
+              <!--{if $iCMS.CONFIG.open.WB.enable }-->
+              <a class="btn btn-danger btn-sm" href="<!--{iCMS:router url='/api/user/login/wb'}-->"><i class="fa fa-weibo"></i> 微博登录</a>
+              <!--{/if}-->
+              <!--{if $iCMS.CONFIG.open.WX.enable }-->
+              <a class="btn btn-success btn-sm" href="<!--{iCMS:router url='/api/user/login/wx'}-->"><i class="fa fa-weixin"></i> 微信登录</a>
+              <!--{/if}-->
+              <hr />
+          </div>
+          <!--{/if}-->
+
           <div class="form-group">
             <label for="login_uname">用户名</label>
             <input type="text" placeholder="邮箱 或 昵称" data-container=".uname_tip" name="uname" id="login_uname" class="iCMS_login_uname form-control">
@@ -65,21 +81,6 @@
           <div class="clearfix mt10">
             <a class="btn btn-success" href="<!--{iCMS:router url='/api/user/register'}-->"><i class="fa fa-user"></i> 我没有账号？去注册 »</a>
           </div>
-          <!--{if !$user}-->
-          <hr />
-          <div class="open-btn">
-            <h3 class="gray mb10">您也可以用以下方式登录：</h3>
-            <!--{if $iCMS.CONFIG.open.QQ.enable }-->
-            <a class="btn btn-primary btn-sm" href="<!--{iCMS:router url='/api/user/login/qq'}-->"><i class="fa fa-qq"></i> QQ 登录</a>
-            <!--{/if}-->
-            <!--{if $iCMS.CONFIG.open.WB.enable }-->
-            <a class="btn btn-danger btn-sm" href="<!--{iCMS:router url='/api/user/login/wb'}-->"><i class="fa fa-weibo"></i> 微博登录</a>
-            <!--{/if}-->
-            <!--{if $iCMS.CONFIG.open.WX.enable }-->
-            <a class="btn btn-success btn-sm" href="<!--{iCMS:router url='/api/user/login/wx'}-->"><i class="fa fa-weixin"></i> 微信登录</a>
-            <!--{/if}-->
-          </div>
-          <!--{/if}-->
           <div class="clearfix mb20"></div>
       </div>
     </div>

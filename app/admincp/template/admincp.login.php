@@ -94,10 +94,10 @@ $(function(){
 <div class="container">
   <div class="iCMS_login">
     <div class="info">
-      <a class="iCMS-logo" href="http://www.idreamsoft.com" target="_blank">
-        <img src="./app/admincp/ui/iCMS.login-6.0.png" />
+      <a class="iCMS-logo" href="http://www.cyznj.com" target="_blank">
+        首页
       </a>
-      <p>iCMS 是一套采用 PHP 和 MySQL 构建的高效简洁的内容管理系统,为您的网站提供一个完美的开源解决方案</p>
+      <p>微锤子后台管理</p>
     </div>
     <div class="login">
       <form action="<?php echo __SELF__; ?>" method="post" enctype="multipart/form-data" class="form-horizontal" id="iCMS-Login" target="iPHP_FRAME">
