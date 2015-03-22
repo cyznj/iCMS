@@ -44,7 +44,7 @@
 <!--{/if}-->
 <div class="clearfix mb10"></div>
 <div id="iCMS-article-list" class="article_list">
-    <h3 class="title"><span><!--{$category.name}--></span></h3>
+    <h3 class="title"><span><!--{if !$category.name}-->在这方寸之间，领略品质生活！<!--{/if}--><!--{$category.name}--></span></h3>
     <ul class="list">
         <!--{iCMS:article:list loop="true" page="true" user="true" row="100"}-->
         <li class="full">
