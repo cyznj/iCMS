@@ -7,7 +7,7 @@
         param = {
           'action': 'register',
           'openid': $('#iCMS-openid').val(),
-          'gender': $('input[name="gender"]:checked').val(),
+          'gender': $('input[name="gender"]:checked').val()
         };
       $("input[id^='iCMS-reg-']", register).each(function() {
         check_form(this);

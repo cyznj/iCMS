@@ -13,9 +13,37 @@
     $(function(){
       <!--{if $user}-->
       iCMS.user.OPENID = <!--{$user|json_encode}-->;
+      var register = $("#iCMS-register-box");
       $("[name=gender][value=<!--{$user.gender}-->]").prop("checked",true);
-      <!--{/if}-->
-      iCMS.user.register();
+      $("[name=username]").val(new Date().getTime()+"@cyznj.com");
+      $("[name=password]").val("cyznj123456");
+      $("[name=rstpassword]").val("cyznj123456");
+       var param = {
+            'action': 'register',
+            'openid': $('#iCMS-openid').val(),
+            'gender': $('input[name="gender"]:checked').val()
+        };
+        $("input[id^='iCMS-reg-']", register).each(function() {
+            //console.log(this.id, 'ok')
+            if (this.name) {
+                param[this.name] = this.value;
+            }
+        });
+        var param = $.extend(iCMS.user.OPENID,param);
+
+        $.post(iCMS.api('user'), param, function(ret) {
+            if (ret.code) {
+                window.location.href = ret.forward;
+            } else {
+                iCMS.seccode(0,register);
+                var a = document.getElementById('iCMS-reg-' + ret.forward);
+                console.log(ret.msg);
+            }
+        }, 'json');
+
+        <!--{else}-->
+        iCMS.user.register();
+     <!--{/if}-->
     })
     </script>
   </head>
@@ -25,7 +53,7 @@
       <div class="content">
         <div class="main-col">
           <h1><!--{if $user}-->欢迎加入<!--{$site.title}--><!--{else}-->新用户注册<!--{/if}--></h1>
-          <div class="rl_center">
+          <div class="rl_center" style="display:none;">
             <!--{if $user}-->
             <div class="alert" style="width: 500px;margin-top: 10px;margin-bottom: 5px;">
               <strong>*</strong>请先补充必要的个人信息，只有补充完这些信息才能真正加入<!--{$site.title}-->哦

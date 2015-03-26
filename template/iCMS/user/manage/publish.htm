@@ -5,7 +5,11 @@ iCMS.config.UI = '<!--{$iCMS.UI}-->';
   <script src="<!--{$iCMS.UI}-->/bootstrap/2.3.2/js/bootstrap-switch.min.js"></script>
   <script src="<!--{$iCMS.UI}-->/iCMS.user.editor-6.0.0.js" type="text/javascript" charset="utf-8"></script>
   <script src="<!--{$iCMS.UI}-->/ueditor/ueditor.all.min.js" type="text/javascript" charset="utf-8"></script>
-
+  <style type="text/css">
+      .header{
+          position:static;
+      }
+  </style>
 <form action="<!--{iCMS:router url='/user'}-->" method="post" target="iCMS_FRAME">
     <input name="action" type="hidden" value="manage" />
     <input name="pg" type="hidden" value="publish" />
@@ -103,7 +107,7 @@ $(function(){
 	    	$('#source').val('');
 	    }else{
 	    	$('#source-box').css({
-	    		display: 'inline-block',
+	    		display: 'inline-block'
 	    	});
 	    }
 	});

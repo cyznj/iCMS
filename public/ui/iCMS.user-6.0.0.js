@@ -245,14 +245,14 @@
                 });
             },
             noavatar: function(img) {
-                img.src = iCMS.config.PUBLIC+'/ui/avatar.gif';
+                img.src = '/public/ui/avatar.gif';
             },
             nocover: function(img,type) {
                 var name = 'coverpic';
                 if(type=="m"){
                     name = 'm_coverpic';
                 }
-                img.src = iCMS.config.PUBLIC+'/ui/'+name+'.jpg';
+                img.src = '/public/ui/'+name+'.jpg';
             }
     };
 })(jQuery);

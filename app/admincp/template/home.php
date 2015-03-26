@@ -23,7 +23,7 @@ iACP::head();
   </div>
   <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    欢迎使用iCMS内容管理系统！<strong><?php echo iMember::$data->username;?></strong>。您最后一次登陆时间:<strong><?php echo get_date(iMember::$data->lastlogintime,"Y-n-j H:i:s") ; ?></strong>，IP地址为:<strong><?php echo iMember::$data->lastip; ?></strong>。如有异常请及时排查！ </div>
+    欢迎使用cyznj内容管理系统！<strong><?php echo iMember::$data->username;?></strong>。您最后一次登陆时间:<strong><?php echo get_date(iMember::$data->lastlogintime,"Y-n-j H:i:s") ; ?></strong>，IP地址为:<strong><?php echo iMember::$data->lastip; ?></strong>。如有异常请及时排查！ </div>
   <div class="widget-box">
     <div class="widget-title"> <span class="icon"> <i class="fa fa-signal"></i> </span>
       <h5>站点数据统计</h5>
@@ -79,7 +79,6 @@ iACP::head();
           <td>当前程序版本</td>
           <td>iCMS <?php echo iCMS_VER ; ?>[<?php echo iCMS_RELEASE ; ?>]</td>
           <td><a href="<?php echo __ADMINCP__;?>=patch&do=check&force=1&frame=iPHP" target="iPHP_FRAME" id="home_patch">最新版本</a></td>
-          <td><span id="newversion"><img src="./app/admincp/ui/ajax_loader.gif" width="16" height="16" align="absmiddle"></span></td>
         </tr>
         <tr>
           <td>服务器操作系统</td>
@@ -139,103 +138,4 @@ iACP::head();
     </div>
   </div>
 </div>
-<div class="iCMS-container">
-  <div class="row">
-  <div class="span5">
-    <div class="widget-box">
-      <div class="widget-title"> <span class="icon"> <i class="fa fa-info-circle"></i> </span>
-        <h5>iCMS 开发信息</h5>
-      </div>
-      <div class="widget-content nopadding">
-        <table class="table table-bordered">
-          <tr>
-            <td style="width:60px">版权所有</td>
-            <td>
-              <a class="btn btn-inverse" href="http://www.idreamsoft.com" target="_blank"><i class="fa fa-copyright"></i> 艾梦软件（iDreamSoft.com）</a>
-            </td>
-          </tr>
-          <tr>
-            <td>开 发 者</td>
-            <td>
-              <a class="btn btn-inverse" href="http://t.qq.com/idreamsoft" target="_blank"><i class="fa fa-at"></i> 枯木(@idreamsoft)</a>
-              <a class="btn" href="https://github.com/idreamsoft/iCMS" target="_blank"><i class="fa fa-github"></i> GitHub</a>
-            </td>
-          </tr>
-          <tr>
-            <td>帮助</td>
-            <td><a class="btn" href="http://www.idreamsoft.com/doc/iCMS/index.html" target="_blank">模版标签说明</a></td>
-          </tr>
-          <tr>
-            <td>许可协议</td>
-            <td>
-              <a class="btn" href="http://www.idreamsoft.com/doc/iCMS.LGPL.html" target="_blank">LGPL 开源协议</a>
-              <a class="btn btn-danger" href="http://www.idreamsoft.com/service.html" target="_blank"><i class="fa fa-ticket"></i> 商业授权</a>
-              <a class="btn btn-success" href="http://www.idreamsoft.com/donate.html" target="_blank"><i class="fa fa-jpy"></i> 捐赠</a>
-            </td>
-          </tr>
-          <tr>
-            <td>相关链接</td>
-            <td><a class="btn btn-small" href="http://www.idreamsoft.com" target="_blank">iDreamSoft</a>
-              <a class="btn btn-small" href="http://www.idreamsoft.com/iCMS/" target="_blank">iCMS</a>
-              <a class="btn btn-small" href="http://www.idreamsoft.com/template/" target="_blank">&#x6A21;&#x677F;</a>
-              <a class="btn btn-small" href="http://www.idreamsoft.com/doc" target="_blank">&#x6587;&#x6863;</a> <a class="btn btn-small" href="http://www.idreamsoft.com/feedback/" target="_blank">&#x8BA8;&#x8BBA;&#x533A;</a></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="span6">
-    <div class="widget-box">
-      <div class="widget-title"> <span class="icon"> <i class="fa fa-bug"></i> </span>
-        <h5>BUG提交</h5>
-      </div>
-      <div class="widget-content nopadding">
-        <form action="http://www.idreamsoft.com/cms/feedback.php" method="post" class="form-inline" id="iCMS-feedback" target="iPHP_FRAME">
-          <textarea id="bug_content" name="content" class="tip" title="为了保证效率，请务必描述清楚你的问题，例如包含 iCMS 版本号、服务器操作系统、WEB服务器版本、浏览器版本等必要信息，不合格问题将可能会被无视掉" style="width:95%; height: 160px; margin:4px 0px 4px 10px;padding: 4px;">
-iCMS 版本号:iCMS <?php echo iCMS_VER ; ?>[<?php echo iCMS_RELEASE ; ?>]
-服务器操作系统:<?php echo PHP_OS ; ?>;
-WEB服务器版本:<?php echo $_SERVER['SERVER_SOFTWARE'] ; ?>;
-MYSQL版本:<?php echo iDB::version() ; ?>;
-浏览器版本:<?php echo $_SERVER['HTTP_USER_AGENT'] ; ?>;
-出问题的URL:
-问题描述:</textarea>
-          <div class="clearfix mt10"></div>
-          <button id="bug_button" class="btn btn-primary fr mr20" type="submit"><i class="fa fa-check"></i> 提交</button>
-          <input id="bug_email" name="email" type="text" class="span4 ml10" placeholder="您的邮箱">
-          <div class="clearfix mt10"></div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<script type="text/javascript">
-$(function(){
-	window.setTimeout(function(){
-		$.getJSON("http://www.idreamsoft.com/cms/version.php?callback=?",
-		    function(o){
-		        $('#newversion').text(o.version);
-		    }
-		);
-	},1000);
-	<?php if(iCMS::$config['system']['patch'] && iACP::is_superadmin()){?>
-    	window.setTimeout(function(){
-			$.getJSON('<?php echo __ADMINCP__;?>=patch&do=check&ajax=1&jt=<?php echo time(); ?>',
-				function(json){
-					if(json.code=="0"){
-						return;
-					}
-					iCMS.dialog({
-					    content: json.msg,
-					    okValue: '马上更新',
-					    ok: function () { window.location.href=json.url;},
-					    cancelValue: '以后在说',
-					    cancel: function () {return true;}
-					});
-				}
-			);
-    	},1000);
-	<?php } ?>
-});
-</script>
 <?php iACP::foot();?>

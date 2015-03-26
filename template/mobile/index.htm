@@ -9,7 +9,7 @@
 <body class="iCMS-mobile">
 <!--{include file="./navbar.htm"}-->
 <div class="container">
-    <!--{iCMS:article:list pic="true" row="8"}-->
+    <!--{iCMS:article:list pic="true" row="5"}-->
     <!--{if $article_list}-->
     <div id="cat_carousel" class="carousel slide" data-ride="carousel">
         <!-- 轮播（Carousel）指标 -->
@@ -19,9 +19,6 @@
             <li data-target="#cat_carousel" data-slide-to="2"></li>
             <li data-target="#cat_carousel" data-slide-to="3"></li>
             <li data-target="#cat_carousel" data-slide-to="4"></li>
-            <li data-target="#cat_carousel" data-slide-to="5"></li>
-            <li data-target="#cat_carousel" data-slide-to="6"></li>
-            <li data-target="#cat_carousel" data-slide-to="7"></li>
         </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner" role="listbox">
@@ -47,7 +44,7 @@
 <!--{/if}-->
 <div class="clearfix mb10"></div>
 <div id="iCMS-article-list" class="article_list">
-    <h3 class="title"><span><!--{$category.name}--></span></h3>
+    <h3 class="title"><span><!--{if !$category.name}-->在这方寸之间，领略品质生活！<!--{/if}--><!--{$category.name}--></span></h3>
     <ul class="list">
         <!--{iCMS:article:list loop="true" page="true" user="true" row="100"}-->
         <li class="full">
@@ -67,7 +64,7 @@
                      <span class="count" data-param='<!--{$article_list.param|json_encode}-->'>
                              <a href="javascript:;" style="background:#FF5E52;color:white;"
                                 class="post-like iCMS_article_do" data-param='{"do":"good"}'>
-                                 点赞(<!--{$article_list.good}-->)
+                                 点赞(<span class="iCMS_good_num"><!--{$article_list.good}--></span>)
                              </a>
                      </span>
                      <span class="count">
