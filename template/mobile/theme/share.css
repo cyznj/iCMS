@@ -1,0 +1,25 @@
+.bdshare-button-style0-24 a{width: 24px;height: 24px;display: inline-block;margin-right: 5px;background: url(image/share.png);cursor: pointer;margin-bottom: -8px;opacity: .8;}
+.bdshare-button-style0-24 a:hover{opacity: 1}
+.bdshare-button-style0-24 a.bds_tsina{background-position: 0 0;}
+.bdshare-button-style0-24 a.bds_weixin{background-position: 0 -32px;}
+.bdshare-button-style0-24 a.bds_qzone{background-position: 0 -65px;}
+.bdshare-button-style0-24 a.bds_sqq{background-position: 0 -98px;}
+.bdshare-button-style0-24 a.bds_renren{background-position: 0 -131px;}
+.bdshare-button-style0-24 a.bds_tqq{background-position: 0 -163px;}
+.bdshare-button-style0-24 a.bds_douban{background-position: 0 -196px;}
+.bdshare-button-style0-24 a.bds_fbook{background-position: 0 -226px;}
+
+.bds_count{border-left: solid 1px #e6e6e6;padding: 0 7px;}
+
+#bdshare_weixin_qrcode_dialog.bd_weixin_popup .bd_weixin_popup_head{font-size: 16px;padding: 0 4px;}
+#bdshare_weixin_qrcode_dialog.bd_weixin_popup .bd_weixin_popup_foot{padding: 0 4px;}
+#bdshare_weixin_qrcode_dialog.bd_weixin_popup{padding: 20px;min-height: 329px;min-width: 300px;}
+#bdshare_weixin_qrcode_dialog.bd_weixin_popup .bd_weixin_popup_main{padding: 20px 0;}
+
+/* .bdshare-button-style0-24 a.bds_weixin.bdsm,
+.bdshare-button-style0-24 a.bds_sqq.bdsm{background: none;width: auto;border-radius: 30px;padding: 0 30px;border: 1px solid #5AC64F;background-color: #fff;color: #5AC64F;font-size: 12px;float: right;margin-left: 10px;margin-right: 0;margin-top: -5px;height: 38px;line-height: 37px;font-weight: bold}
+
+.bdshare-button-style0-24 a.bds_sqq.bdsm{border-color: #39B2E2;color: #39B2E2;margin-left: 20px;}
+
+.bdshare-button-style0-24 a.bds_weixin.bdsm:hover{background-color: #5AC64F;color: #fff;}
+.bdshare-button-style0-24 a.bds_sqq.bdsm:hover{background-color: #39B2E2;color: #fff;} */

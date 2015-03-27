@@ -18,7 +18,24 @@
     <!--{include file="./navbar.htm"}-->
     <div class="container">
       <div class="wrapper">
-        <article>
+          <div class="article-social" data-param='<!--{$article.param|json_encode}-->'>
+              <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
+                  <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
+              </a>
+              <div class="action-share bdsharebuttonbox" id="share-bd">
+                  <strong>分享到：</strong>
+                  <a class="bds_qzone" data-cmd="qzone"></a>
+                  <a class="bds_tsina" data-cmd="tsina"></a>
+                  <a class="bds_weixin bdsm" data-cmd="weixin"></a>
+                  <a class="bds_tqq" data-cmd="tqq"></a>
+                  <a class="bds_sqq bdsm" data-cmd="sqq"></a>
+                  <a class="bds_renren" data-cmd="renren"></a>
+                  <a class="bds_douban" data-cmd="douban"></a>
+                  累计分享：<span class="bds_count" data-cmd="count"></span>次
+              </div>
+          </div>
+
+          <article>
           <h1><!--{$article.title}--></h1>
           <div class="info">
             <span class="label label-success"><!--{$article.user.at}--></span> 时间:<!--{$article.pubdate|date:"Y-m-d H:s"}-->　<span class="fs_btn btn btn-default">A<sup>+</sup></span>
@@ -118,6 +135,28 @@
     })
     </script>
     <script src="<!--{$article.hits.script}-->"></script>
+    bdDesc : '刚刚看到这篇很不错的文章，特地分享给大家！',
+    bdUrl : '<!--{$article.url}-->?share',
+    bdPic : '<!--{$article.pic.url}-->',
+    "bdMini": "2",
+    "bdMiniList": false,
+    "bdStyle": "0",
+    "bdSize": "24"
+    },
+    share:[{
+    bdCustomStyle: '<!--{$site.urls.tpl}-->/theme/share.css'
+    }],
+    image: {
+    tag: 'bdshare',
+    "viewList": ["qzone", "tsina", "weixin", "tqq", "sqq", "renren", "douban"],
+    "viewText": " ",
+    "viewSize": "16"
+    }
+    }
+    //以下为js加载部分
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+
     <!--{include file="./footer.htm"}-->
   </body>
 </html>
