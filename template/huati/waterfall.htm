@@ -1,0 +1,31 @@
+<section class="container">
+    <style type="text/css">
+        .js-masonry .item {
+            margin-left:5px;
+            margin-top:5px;
+            width: 220px;
+            float: left;
+            border: 1px solid;
+            background: #09F;
+        }
+    </style>
+    <div id="js-masonry" class="js-masonry">
+        <!--{iCMS:article:list loop="true" pic="true" row="100" orderby="hot"}-->
+        <div class="item">
+            <a href="<!--{$article_list.url}-->">
+                <img class="thumb" src="<!--{$article_list.pic.url}-->"
+                     data-src="<!--{$article_list.pic.url}-->" style=""/>
+            </a>
+        </div>
+        <!--{/iCMS}-->
+    </div>
+    <script src="<!--{$iCMS.UI}-->/masonry/masonry.pkgd.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var container = document.querySelector('#js-masonry');
+            new Masonry(container, {
+                columnWidth: 220
+            });
+        });
+    </script>
+</section>
