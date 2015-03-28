@@ -288,3 +288,6 @@ footer .links li:first-child { padding-left: 0; }
 
 /*.iCMS-weixin .navbar .navbar-brand.pull-right{border-left: 1px solid #CBCBCB;}*/
 
+.action-like{
+    display: inline-block; background-color: #FF5E52; color: #fff; border-radius: 3px; padding: 12px 20px; font-size: 15px; margin: 0 auto 30px; min-width: 120px; max-width: 100%; opacity: .8; text-align: center;
+}

@@ -18,7 +18,7 @@
     <!--{include file="./navbar.htm"}-->
     <div class="container">
       <div class="wrapper">
-          <div class="article-social" data-param='<!--{$article.param|json_encode}-->'>
+          <div style="text-align:center" class="article-social" data-param='<!--{$article.param|json_encode}-->'>
               <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
                   <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
               </a>
@@ -52,6 +52,7 @@
               <div class="list-group">
                 <!--{iCMS:article:list loop="true" row="10" cid="$category.cid"}-->
                 <a href="<!--{$article_list.url}-->" class="list-group-item">
+                <img src="<!--{$article_list.pic.url}-->" style="width:140px;heigth:140px;margin:0px"/>
                 <h4 class="list-group-item-heading r3"><!--{$article_list.title}--></h4>
                 <p class="list-group-item-text"><!--{$article_list.description|cut:40:'...'}--></p>
                 </a>
