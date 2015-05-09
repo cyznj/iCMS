@@ -29,7 +29,7 @@
           <!--{iCMS:article:list loop="true" pic="true" row="100" orderby="hot"}-->
           <li data-param='<!--{$article_list.param|json_encode}-->'>
             <a href="<!--{$article_list.url}-->">
-            <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
+            <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->_320x180"/>
             <h2><!--{$article_list.title}--></h2>
             </a>
             <a href="javascript:;" class="post-like iCMS_article_do" data-param='{"do":"good"}'>

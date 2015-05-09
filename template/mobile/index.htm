@@ -5,11 +5,21 @@
     <meta name="keywords" content="<!--{$category.keywords}-->"/>
     <meta name="description" content="<!--{$category.description}-->"/>
     <!--{iCMS:public:ui}-->
+    <style type="text/css">
+        .mobileImage{
+            width:100%;height:220px
+        }
+        @media (min-width: 500px){
+            .mobileImage{
+                width:100%;height:380px
+            }
+        }
+    </style>
 </head>
 <body class="iCMS-mobile">
 <!--{include file="./navbar.htm"}-->
 <div class="container">
-    <!--{iCMS:article:list pic="true" row="5"}-->
+    <!--{iCMS:article:list pic="true" row="4"}-->
     <!--{if $article_list}-->
     <div id="cat_carousel" class="carousel slide" data-ride="carousel">
         <!-- 轮播（Carousel）指标 -->
@@ -18,15 +28,13 @@
             <li data-target="#cat_carousel" data-slide-to="1"></li>
             <li data-target="#cat_carousel" data-slide-to="2"></li>
             <li data-target="#cat_carousel" data-slide-to="3"></li>
-            <li data-target="#cat_carousel" data-slide-to="4"></li>
         </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner" role="listbox">
             <!--{foreach key=key value=alist from="$article_list"}-->
-            <div class="item<!--{if $key==" 0
-            "}--> active<!--{/if}-->">
+            <div class='item<!--{if $key=="0"}--> active<!--{/if}-->'>
             <a href="<!--{$alist.url}-->">
-                <img src="<!--{$alist.pic.url}-->" alt="<!--{$alist.title}-->">
+                <img src="<!--{$alist.pic.url}-->_320x320" alt="<!--{$alist.title}-->">
 
                 <div class="carousel-caption">
                     <h3><!--{$alist.title}--></h3>
@@ -46,12 +54,12 @@
 <div id="iCMS-article-list" class="article_list">
     <h3 class="title"><span><!--{if !$category.name}-->在这方寸之间，领略品质生活！<!--{/if}--><!--{$category.name}--></span></h3>
     <ul class="list">
-        <!--{iCMS:article:list loop="true" page="true" user="true" row="100"}-->
+        <!--{iCMS:article:list loop="true" page="true" user="true" row="3"}-->
         <li class="full">
             <a href="<!--{$article_list.url}-->">
                 <!--{if $article_list.pic.url}-->
-                <div class="thumb">
-                    <img class="lazy" data-src="<!--{$article_list.pic.url}-->"
+                <div class="mobileImage">
+                    <img class="lazy mobileImage" data-src="<!--{$article_list.pic.url}-->_320x160"
                          src="<!--{$site.urls.ui}-->/img/img-default.png"/>
                 </div>
                 <!--{/if}-->
