@@ -5,6 +5,16 @@
     <meta name="keywords" content="<!--{$category.keywords}-->"/>
     <meta name="description" content="<!--{$category.description}-->"/>
     <!--{iCMS:public:ui}-->
+    <style type="text/css">
+        .mobileImage{
+            width:100%;height:220px
+        }
+        @media (min-width: 500px){
+            .mobileImage{
+                width:100%;height:380px
+            }
+        }
+    </style>
 </head>
 <body class="iCMS-mobile">
 <!--{include file="./navbar.htm"}-->
@@ -26,7 +36,7 @@
             <div class="item<!--{if $key==" 0
             "}--> active<!--{/if}-->">
             <a href="<!--{$alist.url}-->">
-                <img src="<!--{$alist.pic.url}-->" alt="<!--{$alist.title}-->">
+                <img src="<!--{$alist.pic.url}-->_320x160" alt="<!--{$alist.title}-->">
 
                 <div class="carousel-caption">
                     <h3><!--{$alist.title}--></h3>
@@ -50,8 +60,8 @@
         <li class="full">
             <a href="<!--{$article_list.url}-->">
                 <!--{if $article_list.pic.url}-->
-                <div class="thumb">
-                    <img class="lazy" data-src="<!--{$article_list.pic.url}-->"
+                <div class="mobileImage">
+                    <img class="lazy mobileImage" data-src="<!--{$article_list.pic.url}-->_320x160"
                          src="<!--{$site.urls.ui}-->/img/img-default.png">
                 </div>
             </a>
