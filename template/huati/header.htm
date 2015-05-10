@@ -20,6 +20,16 @@
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+    .titlecircle{
+        text-align:center;
+        line-height:50px;
+        border:1px solid red;
+        height:50px;
+        width:80px;
+        border-radius:10px;
+        -moz-border-radius:10px; /* 老的 Firefox */
+    }
+
 </style>
 
 <header class="header">
@@ -32,14 +42,14 @@
       </h1>
       <ul class="nav">
         <li class="navto-home active" id="c0">
-          <a href="<!--{$site.url}-->">首页</a>
+          <a href="<!--{$site.url}-->" class="titlecircle">首页</a>
         </li>
           <!--{iCMS:category:list loop="true" stype='top' row="7"}-->
           <li class="navto-<!--{$category_list.dir}--> shakediv active" id="c<!--{$category_list.cid}-->">
-           <a href="<!--{$category_list.url}-->"><!--{$category_list.name}--></a>
+           <a href="<!--{$category_list.url}-->" class="titlecircle"><!--{$category_list.name}--></a>
           </li>
           <!--{iCMS:category:list as="sub_category" loop="true" stype='sub' row="10" cid=$category_list.cid}-->
-          <li class="shakediv active" id="c<!--{$sub_category.cid}-->"><a href="<!--{$sub_category.url}-->" target="_blank"> <i class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
+          <li class="shakediv active" id="c<!--{$sub_category.cid}-->"><a class="titlecircle" href="<!--{$sub_category.url}-->"> <i class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
           <!--{/iCMS}-->
         <!--{/iCMS}-->
       </ul>
