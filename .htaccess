@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteBase /
-RewriteRule ^(res/.*/.*/.*/.*\.(jpg|jpeg|png)_.*)$ /public/resize.php?file=$1 [L]
+RewriteRule ^(res/.*/.*/.*/.*\.(jpg|jpeg|png)_\d+x\d+)$ /public/resize.php?file=$1 [L]
 
 RewriteRule ^usercp/(\d+)/$                     user.php?do=home&uid=$1 [QSA,L]
 RewriteRule ^usercp/(\d+)/(\d+)/$             user.php?do=home&uid=$1&cid=$2 [L]
