@@ -108,22 +108,22 @@ class iFS {
         if (function_exists('file_get_contents') && $method != "rb") {
             $filedata = file_get_contents($fn);
         } else {
-            if ($handle = @fopen($fn, $method)) {
+            if ($handle = fopen($fn, $method)) {
                 flock($handle, LOCK_SH);
-                $filedata = @fread($handle, filesize($fn));
+                $filedata = fread($handle, filesize($fn));
                 fclose($handle);
             }
         }
         return $filedata;
     }
 
-    public static function write($fn, $data, $check = 1, $method = "rb+", $iflock = 1, $chmod = 1) {
+    public static function write($fn, $data, $check = 1, $method = "wb+", $iflock = 1, $chmod = 1) {
         $check && self::check($fn);
-        touch($fn);
+        // @touch($fn);
         $handle = fopen($fn, $method);
         $iflock && flock($handle, LOCK_EX);
         fwrite($handle, $data);
-        $method == "rb+" && ftruncate($handle, strlen($data));
+        // $method == "rb+" && ftruncate($handle, strlen($data));
         fclose($handle);
         $chmod && @chmod($fn, 0777);
     }

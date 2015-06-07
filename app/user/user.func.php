@@ -12,7 +12,17 @@ iPHP::app('user.class','static');
 function user_data($vars=null){
 	$vars['uid']   OR iPHP::warning('iCMS&#x3a;user&#x3a;data 标签出错! 缺少"uid"属性或"uid"值为空.');
 	$uid = $vars['uid'];
-	if(strpos($uid, ',')){
+	if($uid=='me'){
+		$uid  = 0;
+		$auth = user::get_cookie();
+		$auth && $uid = user::$userid;
+	}
+	if(strpos($uid, ',')===false){
+		$user = (array)user::get($uid);
+		if($vars['data']){
+			$user+= (array)user::data($uid);
+		}
+	}else{
 		$uid_array = explode(',', $uid);
 		foreach ($uid_array as $key => $value) {
 			$user[$key] = (array)user::get($uid);
@@ -20,13 +30,8 @@ function user_data($vars=null){
 				$user[$key]+= (array)user::data($uid);
 			}
 		}
-	}else{
-		$user = (array)user::get($uid);
-		if($vars['data']){
-			$user+= (array)user::data($uid);
-		}
 	}
-	return (array)$user;
+	return $user[0]===false?false:(array)$user;
 }
 
 function user_list($vars=null){

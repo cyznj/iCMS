@@ -43,6 +43,9 @@ class articleTable {
     public static function check_title($title){
         return iDB::value("SELECT `id` FROM `#iCMS@__article` where `title` = '$title'");
     }
+    public static function check_clink($clink){
+        return iDB::value("SELECT `id` FROM `#iCMS@__article` where `clink` = '$clink'");
+    }
     public static function value($field='id',$id=0){
         if(empty($id)){
             return;

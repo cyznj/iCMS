@@ -4,7 +4,6 @@
     <title>用户登录 <!--{$site.title}-->_<!--{$site.seotitle}--></title>
     <meta name="keywords" content="<!--{$site.keywords}-->" />
     <meta name="description" content="<!--{$site.description}-->"/>
-    <meta property="qc:admins" content="152375340763126263757" />
     <!--{iCMS:public:ui}-->
     <script src="<!--{$site.urls.ui}-->/iCMS.login-6.0.0.js"></script>
     <script>
@@ -36,22 +35,6 @@
     <div class="container">
       <div class="wrapper login_reg_wrapper" id="iCMS-login-page">
           <div class="logo"><a href="<!--{$site.url}-->"><img src="<!--{$site.urls.ui}-->/img/iCMS.logo-6.0.png" width="180"/></a></div>
-          <!--{if !$user}-->
-          <div class="open-btn">
-              <h3 class="gray mb10">您也可以用以下方式登录：</h3>
-              <!--{if $iCMS.CONFIG.open.QQ.enable }-->
-              <a class="btn btn-primary btn-sm" href="<!--{iCMS:router url='/api/user/login/qq'}-->"><i class="fa fa-qq"></i> QQ 登录</a>
-              <!--{/if}-->
-              <!--{if $iCMS.CONFIG.open.WB.enable }-->
-              <a class="btn btn-danger btn-sm" href="<!--{iCMS:router url='/api/user/login/wb'}-->"><i class="fa fa-weibo"></i> 微博登录</a>
-              <!--{/if}-->
-              <!--{if $iCMS.CONFIG.open.WX.enable }-->
-              <a class="btn btn-success btn-sm" href="<!--{iCMS:router url='/api/user/login/wx'}-->"><i class="fa fa-weixin"></i> 微信登录</a>
-              <!--{/if}-->
-              <hr />
-          </div>
-          <!--{/if}-->
-
           <div class="form-group">
             <label for="login_uname">用户名</label>
             <input type="text" placeholder="邮箱 或 昵称" data-container=".uname_tip" name="uname" id="login_uname" class="iCMS_login_uname form-control">
@@ -62,7 +45,7 @@
             <input type="password" placeholder="请输入您的密码" data-container=".pass_tip" name="pass" id="login_pass" class="iCMS_login_pass form-control">
             <span class="help-block pass_tip"></span>
           </div>
-          <!--{if $iCMS.CONFIG.user.loginseccode }-->
+          <!--{if $iCMS.CONFIG.user.login.seccode }-->
           <div class="form-group">
             <input type="text" maxlength="4" name="seccode" class="iCMS_login_seccode iCMS_seccode form-control" placeholder="验证码"  data-container=".seccode_tip" >
             <img src="<!--{iCMS:router url='/api/public/seccode'}-->" alt="验证码" class="iCMS_seccode_img r3"/>
@@ -81,6 +64,21 @@
           <div class="clearfix mt10">
             <a class="btn btn-success" href="<!--{iCMS:router url='/api/user/register'}-->"><i class="fa fa-user"></i> 我没有账号？去注册 »</a>
           </div>
+          <!--{if !$user}-->
+          <hr />
+          <div class="open-btn">
+            <h3 class="gray mb10">您也可以用以下方式登录：</h3>
+            <!--{if $iCMS.CONFIG.open.QQ.enable }-->
+            <a class="btn btn-primary btn-sm" href="<!--{iCMS:router url='/api/user/login/qq'}-->"><i class="fa fa-qq"></i> QQ 登录</a>
+            <!--{/if}-->
+            <!--{if $iCMS.CONFIG.open.WB.enable }-->
+            <a class="btn btn-danger btn-sm" href="<!--{iCMS:router url='/api/user/login/wb'}-->"><i class="fa fa-weibo"></i> 微博登录</a>
+            <!--{/if}-->
+            <!--{if $iCMS.CONFIG.open.WX.enable }-->
+            <a class="btn btn-success btn-sm" href="<!--{iCMS:router url='/api/user/login/wx'}-->"><i class="fa fa-weixin"></i> 微信登录</a>
+            <!--{/if}-->
+          </div>
+          <!--{/if}-->
           <div class="clearfix mb20"></div>
       </div>
     </div>

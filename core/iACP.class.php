@@ -40,6 +40,7 @@ class iACP {
     public static $app_file   = NULL;
 
     public static function init() {
+        self::seccode();
         iMember::checkLogin();
         self::$menu = new iMenu();
         self::MP('ADMINCP','page'); //检查是否有后台权限
@@ -47,7 +48,12 @@ class iACP {
         self::$apps  = array('home', 'category', 'pushcategory','tagcategory', 'article', 'push', 'prop', 'setting', 'filter', 'cache','tags','editor');
         iFS::$userid = iMember::$userid;
     }
-
+    public static function seccode(){
+        if($_POST['username'] && $_POST['password']){
+            $seccode = iS::escapeStr($_POST['seccode']);
+            iPHP::seccode($seccode,true) OR iPHP::code(0,'iCMS:seccode:error','seccode','json');
+        }
+    }
 	public static function frame(){
 		self::$frames	= $_GET['frames']?$_GET['frames']:$_POST['frames'];
 		if(empty($_GET['app']) || self::$frames) {

@@ -423,10 +423,17 @@ class articleApp{
         $userid OR $userid = iMember::$userid;
         iFS::$userid = $userid;
 
-
         if(empty($aid) && iCMS::$config['publish']['repeatitle']) {
-			articleTable::check_title($title) && iPHP::alert('该标题的文章已经存在!请检查是否重复');
-		}
+            articleTable::check_title($title) && iPHP::alert('该标题的文章已经存在!请检查是否重复');
+        }
+
+        if(strstr($this->category[$cid]['contentRule'],'{LINK}')!==false){
+            empty($clink) && $clink = strtolower(pinyin($title));
+            if(empty($aid) && $clink) {
+                articleTable::check_clink($clink) && iPHP::alert('该文章自定义链接已经存在!请检查是否重复');
+            }
+        }
+
 
         if(empty($description) && empty($url)) {
             $description = $this->autodesc($body);

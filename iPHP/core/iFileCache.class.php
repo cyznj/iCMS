@@ -87,13 +87,13 @@ class iFC {
         @chmod ($fn, 0777);
         return @unlink($fn);
     }
-    private function write($fn,$data,$check=1,$method="rb+",$iflock=1,$chmod=1) {
+    private function write($fn,$data,$check=1,$method="wb+",$iflock=1,$chmod=1) {
         $check && $this->check($fn);
-        touch($fn);
-        $handle=fopen($fn,$method);
+        // @touch($fn);
+        $handle = fopen($fn,$method);
         $iflock && flock($handle,LOCK_EX);
         fwrite($handle,$data);
-        $method=="rb+" && ftruncate($handle,strlen($data));
+        // $method=="rb+" && ftruncate($handle,strlen($data));
         fclose($handle);
         $chmod && @chmod($fn,0777);
     }

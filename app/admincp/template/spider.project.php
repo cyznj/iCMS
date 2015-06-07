@@ -96,7 +96,7 @@ $(function(){
               <td><?php echo $rs[$i]['id']; ?></td>
               <td><a href="<?php echo APP_URI; ?>&do=inbox&pid=<?php echo $rs[$i]['id']; ?>"><?php echo $rs[$i]['name']; ?></a></td>
               <td><a href="<?php echo APP_URI; ?>&do=project&rid=<?php echo $rs[$i]['rid']; ?>&<?php echo $uri; ?>"><?php echo $ruleArray[$rs[$i]['rid']]; ?></a></td>
-              <td><a href="<?php echo APP_URI; ?>&do=project&cid=<?php echo $rs[$i]['cid']; ?>&<?php echo $uri; ?>"><?php echo $C['name']; ?></a><?php echo $rs[$i]['auto']?"[自动采集]":''; ?></td>
+              <td><a href="<?php echo APP_URI; ?>&do=project&cid=<?php echo $rs[$i]['cid']; ?>&<?php echo $uri; ?>"><?php echo $C['name']; ?></a><?php echo $rs[$i]['auto']?'<i class="fa fa-rocket"></i>':''; ?></td>
               <td><a href="<?php echo APP_URI; ?>&do=project&poid=<?php echo $rs[$i]['poid']; ?>&<?php echo $uri; ?>"><?php echo $postArray[$rs[$i]['poid']]; ?></a></td>
               <td><a href="<?php echo APP_FURI; ?>&do=copyproject&pid=<?php echo $rs[$i]['id']; ?>" class="btn btn-small" target="iPHP_FRAME"><i class="fa fa-copy"></i> 复制</a>
                 <a href="<?php echo APP_URI; ?>&do=testrule&pid=<?php echo $rs[$i]['id']; ?>" class="btn btn-small" data-toggle="modal" title="测试规则"><i class="fa fa-keyboard-o"></i> 测试</a>
@@ -117,6 +117,9 @@ $(function(){
                   </span>
                   <div class="btn-group dropup" id="iCMS-batch"> <a class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1"><i class="fa fa-wrench"></i> 批 量 操 作 </a><a class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                      <li><a data-toggle="batch" data-action="project#auto:1"><i class="fa fa-check-square"></i> 标识自动采集</a></li>
+                      <li><a data-toggle="batch" data-action="project#auto:0"><i class="fa fa-circle-o"></i> 取消自动采集</a></li>
+                      <li class="divider"></li>
                       <li><a data-toggle="batch" data-action="delproject"><i class="fa fa-trash-o"></i> 删除</a></li>
                     </ul>
                   </div>

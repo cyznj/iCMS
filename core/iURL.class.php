@@ -74,7 +74,7 @@ class iURL {
 
             case 'EXT':		$e = $c['htmlext']?$c['htmlext']:self::$config['html_ext'];break;
             case 'TITLE':   $e = urlencode(iS::escapeStr($a['title']));break;
-            case 'LINK':    $e = $a['LINK'];break;
+            case 'LINK':    $e = $a['clink'];break;
             case 'P':       $e = '{P}';break;
         }
         return $e;

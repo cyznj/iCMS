@@ -48,8 +48,22 @@ class spiderApp {
     		case 'delrule':
  				iDB::query("delete from `#iCMS@__spider_rule` where `id` IN($ids);");
    			break;
+            default:
+                if(strpos($batch, '#')!==false){
+                    list($table,$_batch) = explode('#',$batch);
+                    if(in_array($table, array('url','post','project','rul'))){
+                        if(strpos($_batch, ':')!==false){
+                            $data = iACP::fields($_batch);
+                            foreach($idArray AS $id) {
+                                $data && iDB::update("spider_".$table,$data,array('id'=>$id));
+                            }
+                            iPHP::success('操作成功!','js:1');
+                        }
+                    }
+                }
+                iPHP::alert('参数错误!','js:1');
 		}
-		iPHP::success('全部删除完成!','js:1');
+		iPHP::success('全部删除成功!','js:1');
 	}
     function do_delspider() {
     	$this->sid OR iPHP::alert("请选择要删除的项目");
@@ -699,7 +713,7 @@ class spiderApp {
         $this->allHtml = "";
         $responses['reurl'] = $url;
         $rule['__url__']	= $url;
-        foreach ($dataArray AS $key => $data) {
+        foreach ((array)$dataArray AS $key => $data) {
             $content = $this->content($html,$data,$rule);
             $dname   = $data['name'];
             if (strpos($dname,'.')!== false){
@@ -1478,7 +1492,7 @@ class spiderApp {
             }
             if(function_exists('mb_detect_encoding') && empty($encode)) {
                 $encode = mb_detect_encoding($html, array("ASCII","UTF-8","GB2312","GBK","BIG5"));
-                var_dump('mb_detect_encoding:'.$encode);
+                //var_dump('mb_detect_encoding:'.$encode);
             }
         }
         if ($this->contTest || $this->ruleTest) {

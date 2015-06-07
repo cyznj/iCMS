@@ -206,6 +206,23 @@ class userApp {
         $author      = user::$nickname;
         $editor      = user::$nickname;
 
+        if(iCMS::$config['user']['post']['seccode']){
+            $seccode = iS::escapeStr($_POST['seccode']);
+            iPHP::seccode($seccode,true) OR iPHP::alert('iCMS:seccode:error');
+        }
+
+        if(iCMS::$config['user']['post']['interval']){
+            $last_postime = iDB::value("
+                SELECT `postime`
+                FROM `#iCMS@__article`
+                WHERE userid='".user::$userid."'
+                ORDER BY `id` DESC");
+            if($_SERVER['REQUEST_TIME']-$last_postime<iCMS::$config['user']['post']['interval']){
+                iPHP::alert('user:publish:interval');
+            }
+        }
+
+
         if($mobile){
             $_POST['body'] = ubb2html($_POST['body']);
             $_POST['body'] = trim($_POST['body']);
@@ -587,24 +604,23 @@ class userApp {
         }
     }
     public function ACTION_login(){
-        iCMS::$config['user']['login'] OR iPHP::code(0,'user:login:forbidden','uname','json');
+        iCMS::$config['user']['login']['enable'] OR iPHP::code(0,'user:login:forbidden','uname','json');
 
         $uname    = iS::escapeStr($_POST['uname']);
         $pass     = md5(trim($_POST['pass']));
         $remember = (bool)$_POST['remember']?ture:false;
-        $seccode  = iS::escapeStr($_POST['seccode']);
 
         $openid   = iS::escapeStr($_POST['openid']);
         $platform = iS::escapeStr($_POST['platform']);
 
-        if(iCMS::$config['user']['loginseccode']){
+        if(iCMS::$config['user']['login']['seccode']){
+            $seccode  = iS::escapeStr($_POST['seccode']);
             iPHP::seccode($seccode,true) OR iPHP::code(0,'iCMS:seccode:error','seccode','json');
         }
         $remember && user::$cookietime = 14*86400;
         $user = user::login($uname,$pass,(strpos($uname,'@')===false?'nk':'un'));
         if($user===true){
             if($openid){
-                $uid =
                 iDB::query("
                     INSERT INTO `#iCMS@__user_openid`
                            (`uid`, `openid`, `platform`)
@@ -613,6 +629,22 @@ class userApp {
             }
             iPHP::code(1,0,$this->forward,'json');
         }else{
+            if(iCMS::$config['user']['login']['interval']){
+                $cache_name  = "iCMS/error/login.".md5($uname);
+                $login_error = iCache::get($cache_name);
+                if($login_error){
+                    if($login_error[1]>=5){
+                        $_field = (strpos($uname,'@')===false?'nickname':'username');
+                        iDB::update('user',array('status'=>'3'),array($_field=>$uname));
+                        iPHP::code(0,'user:login:interval','uname','json');
+                    }else{
+                        $login_error[1]++;
+                    }
+                }else{
+                    $login_error = array($uname,1);
+                }
+                iCache::set($cache_name,$login_error,iCMS::$config['user']['login']['interval']);
+            }
             // $lang = 'user:login:error';
             // $user && $lang.='_status_'.$user;
             iPHP::code(0,'user:login:error','uname','json');
@@ -620,7 +652,19 @@ class userApp {
     }
 
     public function ACTION_register(){
-        iCMS::$config['user']['register'] OR exit(iPHP::lang('user:register:forbidden'));
+        iCMS::$config['user']['register']['enable'] OR exit(iPHP::lang('user:register:forbidden'));
+
+        $regip      = iS::escapeStr(iPHP::getIp());
+        $regdate    = time();
+
+        if(iCMS::$config['user']['register']['interval']){
+            $ip_regdate = iDB::value("
+                SELECT `regdate`
+                FROM `#iCMS@__user`
+                WHERE `regip`='$regip'
+                ORDER BY uid DESC");
+            ($ip_regdate-$regdate>iCMS::$config['user']['register']['interval']) && iPHP::code(0,'user:register:interval','username','json');
+        }
 
         $username    = iS::escapeStr($_POST['username']);
         $nickname    = iS::escapeStr($_POST['nickname']);
@@ -628,7 +672,6 @@ class userApp {
         $password    = md5(trim($_POST['password']));
         $rstpassword = md5(trim($_POST['rstpassword']));
         $refer       = iS::escapeStr($_POST['refer']);
-        $seccode     = iS::escapeStr($_POST['seccode']);
 
         $openid   = iS::escapeStr($_POST['openid']);
         $type     = iS::escapeStr($_POST['platform']);
@@ -651,12 +694,11 @@ class userApp {
         trim($_POST['rstpassword']) OR iPHP::code(0,'user:password:rst_empty','rstpassword','json');
         $password==$rstpassword OR iPHP::code(0,'user:password:unequal','password','json');
 
-        if(iCMS::$config['user']['regseccode']){
+        if(iCMS::$config['user']['register']['seccode']){
+            $seccode = iS::escapeStr($_POST['seccode']);
             iPHP::seccode($seccode,true) OR iPHP::code(0,'iCMS:seccode:error','seccode','json');
         }
 
-        $regip   = iS::escapeStr(iPHP::getIp());
-        $regdate = time();
         $gid     = 0;
         $pid     = 0;
         $fans    = $follow = $article = $comments = $share = $credit = 0;
@@ -839,7 +881,7 @@ class userApp {
     }
 
     public function API_register(){
-        if(iCMS::$config['user']['register']){
+        if(iCMS::$config['user']['register']['enable']){
             iPHP::set_cookie('forward',$this->forward);
             user::status($this->forward,"login");
             iPHP::view('iCMS://user/register.htm');
@@ -895,7 +937,7 @@ class userApp {
         }
     }
     public function API_login(){
-        if(iCMS::$config['user']['login']){
+        if(iCMS::$config['user']['login']['enable']){
             $this->openid();
             iPHP::set_cookie('forward',$this->forward);
             user::status($this->forward,"login");

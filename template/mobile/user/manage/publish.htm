@@ -1,7 +1,9 @@
 <link href="<!--{$iCMS.UI}-->/bootstrap/2.3.2/css/bootstrap-switch.css" type="text/css" rel="stylesheet"/>
 <script src="<!--{$iCMS.UI}-->/bootstrap/2.3.2/js/bootstrap-switch.min.js"></script>
 <script src="<!--{$site.urls.ui}-->/jquery.insertcontent.js"></script>
-
+<style>
+.iCMS_post_seccode{width: 90px !important;}
+</style>
 <form class="form-inline" role="form" action="<!--{iCMS:router url='/user'}-->" method="post" target="iCMS_FRAME">
 	<input name="action" type="hidden" value="manage" />
 	<input name="pg" type="hidden" value="publish" />
@@ -62,6 +64,15 @@
 		<!--{/if}-->
 	  	<textarea name="body" id="abody" class="form-control" rows="15" placeholder="请输入文章的内容"><!--{$article_data.body}--></textarea>
 	</div>
+	<div class="clearfix mt10"></div>
+	<!--{if $iCMS.CONFIG.user.post.seccode }-->
+	<div class="input-group">
+		<span class="input-group-addon">验证码</span>
+	  	<input type="text" maxlength="4" name="seccode" class="iCMS_post_seccode iCMS_seccode form-control" placeholder="验证码"  data-container=".seccode_tip" >
+	    <img src="<!--{iCMS:router url='/api/public/seccode'}-->" alt="验证码" class="iCMS_seccode_img r3"/>
+	    <a href="javascript:;" class="iCMS_seccode_text" style="float: none">换一张</a>
+    </div>
+	<!--{/if}-->
 	<div class="form-actions mt10">
 		<button class="btn btn-primary btn-lg btn-block" type="submit" id="iCMS-article" data-loading-text='<i class="fa fa-spinner"></i> 提交中...'><i class="fa fa-check"></i> 提交</button>
 	</div>

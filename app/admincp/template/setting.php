@@ -54,7 +54,7 @@ function modal_tplfile(el,a){
   if(!a.checked) return;
 
   var e   = $('#'+el)||$('.'+el);
-  var def = $("#template_pc").val();
+  var def = $("#template_desktop_tpl").val();
   var val = a.value.replace(def+'/', "{iTPL}/");
   e.val(val);
   return 'off';
@@ -252,11 +252,6 @@ function modal_tplfile(el,a){
             </div>
             <span class="help-inline">CMS安装目录，如：http：//www.idreamsoft.com/iCMS/ 则安装目录为:iCMS/ 根目录请输入<span class="label label-info">/</span></span>
             <div class="clearfloat mb10"></div>
-            <div class="input-prepend"> <span class="add-on">网站URL</span>
-              <input type="text" name="config[router][URL]" class="span4" id="router_URL" value="<?php echo $config['router']['URL'] ; ?>"/>
-            </div>
-            <span class="help-inline">网站网址</span>
-            <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">404页面</span>
               <input type="text" name="config[router][404]" class="span4" id="router_404" value="<?php echo $config['router']['404'] ; ?>"/>
             </div>
@@ -355,8 +350,9 @@ function modal_tplfile(el,a){
             unix:///tmp/redis.sock@db:1 <br />
             127.0.0.1:6379@db:1</span>
             <div class="clearfloat mb10"></div>
-            <div class="input-prepend"> <span class="add-on">缓存时间</span>
-              <input type="text" name="config[cache][time]" class="span4" id="cache_time" value="<?php echo $config['cache']['time'] ; ?>"/>
+            <div class="input-prepend input-append"> <span class="add-on">缓存时间</span>
+              <input type="text" name="config[cache][time]" class="span1" id="cache_time" value="<?php echo $config['cache']['time'] ; ?>"/>
+              <span class="add-on" style="width:24px;">秒</span>
             </div>
             <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">数据压缩</span>
@@ -533,26 +529,48 @@ function modal_tplfile(el,a){
           <div id="setting-user" class="tab-pane hide">
             <div class="input-prepend"> <span class="add-on">用户注册</span>
               <div class="switch">
-                <input type="checkbox" data-type="switch" name="config[user][register]" id="user_register" <?php echo $config['user']['register']?'checked':''; ?>/>
+                <input type="checkbox" data-type="switch" name="config[user][register][enable]" id="user_register_enable" <?php echo @$config['user']['register']['enable']?'checked':''; ?>/>
               </div>
             </div>
             <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">注册验证码</span>
               <div class="switch">
-                <input type="checkbox" data-type="switch" name="config[user][regseccode]" id="user_regseccode" <?php echo $config['user']['regseccode']?'checked':''; ?>/>
+                <input type="checkbox" data-type="switch" name="config[user][register][seccode]" id="user_register_seccode" <?php echo @$config['user']['register']['seccode']?'checked':''; ?>/>
               </div>
+            </div>
+            <div class="clearfloat mb10"></div>
+            <div class="input-prepend input-append"> <span class="add-on">注册间隔</span>
+              <input type="text" name="config[user][register][interval]" class="span1" id="user_register_interval" value="<?php echo @(int)$config['user']['register']['interval'] ; ?>"/>
+              <span class="add-on" style="width:24px;">秒</span>
             </div>
             <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">用户登陆</span>
               <div class="switch">
-                <input type="checkbox" data-type="switch" name="config[user][login]" id="user_login" <?php echo $config['user']['login']?'checked':''; ?>/>
+                <input type="checkbox" data-type="switch" name="config[user][login][enable]" id="user_login_enable" <?php echo @$config['user']['login']['enable']?'checked':''; ?>/>
               </div>
             </div>
             <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">登陆验证码</span>
               <div class="switch">
-                <input type="checkbox" data-type="switch" name="config[user][loginseccode]" id="user_loginseccode" <?php echo $config['user']['loginseccode']?'checked':''; ?>/>
+                <input type="checkbox" data-type="switch" name="config[user][login][seccode]" id="user_login_seccode" <?php echo @$config['user']['login']['seccode']?'checked':''; ?>/>
               </div>
+            </div>
+            <div class="clearfloat mb10"></div>
+            <div class="input-prepend input-append"> <span class="add-on">登陆间隔</span>
+              <input type="text" name="config[user][login][interval]" class="span1" id="user_login_interval" value="<?php echo @(int)$config['user']['login']['interval'] ; ?>"/>
+              <span class="add-on" style="width:24px;">秒</span>
+            </div>
+            <span class="help-inline">登陆错误5次后,重试间隔</span>
+            <div class="clearfloat mb10"></div>
+            <div class="input-prepend"> <span class="add-on">发贴验证码</span>
+              <div class="switch">
+                <input type="checkbox" data-type="switch" name="config[user][post][seccode]" id="user_post_seccode" <?php echo $config['user']['post']['seccode']?'checked':''; ?>/>
+              </div>
+            </div>
+            <div class="clearfloat mb10"></div>
+            <div class="input-prepend input-append"> <span class="add-on">发贴间隔</span>
+              <input type="text" name="config[user][post][interval]" class="span1" id="user_post_interval" value="<?php echo (int)$config['user']['post']['interval'] ; ?>"/>
+              <span class="add-on" style="width:24px;">秒</span>
             </div>
             <div class="clearfloat mb10"></div>
             <div class="input-prepend"> <span class="add-on">注册条款</span>

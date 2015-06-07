@@ -31,6 +31,7 @@ return array(
 	),
 	'login'=>array(
 		'def_uname' =>'邮箱 或 昵称',
+		'interval'  =>'您的账号已经连续5次登陆错误，该账号已经被锁定！',
 		'error'     =>'用户名或者密码错误！',
 		'forbidden' =>'系统已关闭登陆功能！',
 	),
@@ -51,6 +52,7 @@ return array(
 		'filter_title' =>'标题中包含被系统屏蔽的字符，请重新填写。',
 		'filter_desc'  =>'简介中包含被系统屏蔽的字符，请重新填写。',
 		'filter_body'  =>'内容中包含被系统屏蔽的字符，请重新填写。',
+		'interval'     =>'您发贴的速度太快了，请休息下吧。',
 	),
 	'findpwd'=>array(
 		'success' =>'您的密码已经修改成功！请重新登陆。',
@@ -67,6 +69,7 @@ return array(
 	),
 	'register' => array(
 		'forbidden'=>'系统已经关闭注册功能！',
+		'interval' =>'同一个IP在{time}时间内只能注册一个账号！',
 		'nickname'=> array(
 			'empty'=>'请填写昵称！',
 			'error'=>'昵称只能4~20位，每个中文字算2位字符。',
