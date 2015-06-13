@@ -39,7 +39,7 @@ class indexApp {
             $fp = fopen($file, "r");
             $numx = fgets($fp, 10);
             fclose($fp);
-            $numx++;
+            $numx = $numx + 1;
             //以上四行代码可以用一条表达式代替：$numx=file_get_contents($file)+1;
         } else {
             $numx = 1;
