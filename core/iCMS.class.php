@@ -134,6 +134,7 @@ class iCMS {
         $user_agent = str_replace(',','|',preg_quote($user_agent));
         return ($user_agent && preg_match('/'.$user_agent.'/i',$_SERVER["HTTP_USER_AGENT"]));
     }
+
     public static function assign_site(){
         $site          = self::$config['site'];
         $site['title'] = self::$config['site']['name'];
