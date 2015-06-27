@@ -37,14 +37,18 @@ class indexApp {
     {
         if (file_exists(iPATH . $file)) {
             $fp = fopen($file, "r");
-            $numx = fgets($fp, 10);
+            $numx = intval(fgets($fp, 20));
             fclose($fp);
             $numx = $numx + 1;
             //以上四行代码可以用一条表达式代替：$numx=file_get_contents($file)+1;
         } else {
             $numx = 1;
         }
-        file_put_contents(iPATH . $file, $numx); //当文件不存在时，这函数会自动创建文件，而且会自动把参数转成字符串写入。
+        if($numx > 10){
+            file_put_contents(iPATH . $file, $numx);
+        }else{
+            $numx = intval(fgets($fp, 20));
+        }
         return $numx;
     }
 }
