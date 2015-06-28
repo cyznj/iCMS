@@ -60,7 +60,13 @@
             <!--{/iCMS}-->
         </ul>
     </div>
+
     <div class="widget widget_ui_tags">
+        <form id="iCMS-search-box" method="get" class="searchform" action="<!--{iCMS:router url='/api'}-->" >
+            <input name="app" type="hidden" value="search" />
+            <input type="text" name="q" class="search-input" placeholder="请输入关键词" value="<!--{$search.title}-->">
+            <button class="search-btn iCMS_search_btn" type="submit">搜索</button>
+        </form>
         <h3 class="title"><strong>热门标签</strong></h3>
         <div class="items">
             <!--{iCMS:tag:list loop="true" row="30" orderby="hot"}-->
@@ -83,16 +89,6 @@
                 </a>
             </li>
             <!--{/iCMS}-->
-        </ul>
-    </div>
-    <div class="widget widget_ui_tags">
-        <h3 class="title"><strong>友情链接</strong></h3>
-        <ul class="posts-xs">
-            <div class="items">
-                <!--{iCMS:link loop='true'}-->
-                <a target="_blank" href="<!--{$link.url}-->"><img src="<!--{$link.logo}-->" alt=“<!--{$link.name}-->”><!--{$link.name}--></a>
-                <!--{/iCMS}-->
-            </div>
         </ul>
     </div>
 </aside>
