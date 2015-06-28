@@ -36,8 +36,18 @@
     <section class="container">
       <div class="content-wrap">
         <div class="content excerpts">
-          <h3 class="title"><small class="pull-right">记忆像是倒在掌心的水，不论你摊开还是紧握，终究
-              还是会从指缝间流淌干净。</small></h3>
+            <div class="widget widget_ui_tags">
+                <h3 class="title"><strong style="color:red">去哪儿？</strong></h3>
+                <ul class="posts-xs">
+                    <div class="items">
+                        <!--{iCMS:link loop='true'}-->
+                        <a target="_blank" href="<!--{$link.url}-->" style="margin:5px;width:170px;height:100px"><img src="<!--{$link.logo}-->" alt="<!--{$link.name}-->"><br><!--{$link.name}--></a>
+                        <!--{/iCMS}-->
+                    </div>
+                </ul>
+            </div>
+
+          <h3 class="title"><small class="pull-right">记忆像是倒在掌心的水，不论你摊开还是紧握，终究还是会从指缝间流淌干净。</small></h3>
             <strong>当前站点累计访问量(次):<span style="color:red"><!--{$siteCounter}--></span></strong>
             <div id="index_carousel" class="carousel slide" data-ride="carousel">
                 <!-- 轮播（Carousel）指标 -->

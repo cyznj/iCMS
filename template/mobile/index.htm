@@ -52,6 +52,18 @@
 <!--{/if}-->
 <div class="clearfix mb10"></div>
 <div id="iCMS-article-list" class="article_list">
+    <div>
+        <h3 class="title"><strong style="color:red">去哪儿？</strong></h3>
+        <ul>
+            <div>
+                <!--{iCMS:link loop='true'}-->
+                <a target="_blank" href="<!--{$link.url}-->" style="float:left;width:30%;margin:5px"><img src="<!--{$link.logo}-->" alt="<!--{$link.name}-->" style="width:100%;height:40px"></a>
+                <!--{/iCMS}-->
+                <div style="clear:both"/>
+            </div>
+        </ul>
+    </div>
+
     <h3 class="title"><span><!--{if !$category.name}-->在这方寸之间，领略品质生活！<!--{/if}--><!--{$category.name}--></span></h3>
     <strong>当前站点累计访问量(次):<span style="color:red"><!--{$siteCounter}--></span></strong>
     <ul class="list">
