@@ -35,7 +35,7 @@
             <!--{foreach key=key value=alist from="$article_list"}-->
             <div class="item<!--{if $key==" 0 "}--> active<!--{/if}-->">
             <a href="<!--{$alist.url}-->">
-                <img src="<!--{$alist.pic.url}-->_480x220" alt="<!--{$alist.title}-->">
+                <img src="<!--{$alist.pic.url|thumb:'480':'220'}-->" alt="<!--{$alist.title}-->">
 
                 <div class="carousel-caption">
                     <h3><!--{$alist.title}--></h3>

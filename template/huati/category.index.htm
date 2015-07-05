@@ -19,7 +19,7 @@
           <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10" sub="true" cid="$category.cid"}-->
             <article class="excerpt">
               <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
-                <img class="thumb" src="<!--{$article_list.pic.url}-->_640x320"/>
+                <img class="thumb" src="<!--{$article_list.pic.url|thumb:'640':'320'}-->"/>
               </a>
               <h2>
                 <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>

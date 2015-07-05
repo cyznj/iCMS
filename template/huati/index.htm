@@ -47,7 +47,7 @@
                     <!--{if $article_list}-->
                     <div class="item <!--{if $article_list.first}-->active<!--{/if}-->">
                         <a href="<!--{$article_list.url}-->">
-                            <img src="<!--{$article_list.pic.url}-->_640x320" alt="<!--{$article_list.title}-->"/>
+                            <img src="<!--{$article_list.pic.url|thumb:'640':'320'}-->" alt="<!--{$article_list.title}-->"/>
 
                             <div class="carousel-caption">
                                 <span><!--{$article_list.title}--></span>
@@ -64,7 +64,7 @@
             <!--{iCMS:article:list loop="true" user="true" page="true" pic="true" row="10"}-->
             <article class="excerpt">
                 <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
-                    <img class="thumb" src="<!--{$article_list.pic.url}-->_320x320"/>
+                    <img class="thumb" src="<!--{$article_list.pic.url|thumb:'640':'320'}-->"/>
                 </a>
 
                 <h2>

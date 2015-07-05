@@ -4,9 +4,11 @@ require dirname(__file__) . '/resizeimage.php';
 if (isset($_GET['file'])) {
     $path = trim($_GET['file']); //新图路径
     $srcPath = substr($path, 0, strpos($path, "_")); //原图路径
-    $size = substr($path, strpos($path, "_") + 1);
+    $afterUnderline = substr($path, strpos($path, "_") + 1);
+    $size = substr($afterUnderline,0,strpos($afterUnderline,"."));
     if (strpos($path, "_")>0 && is_file(iPATH . $srcPath)) {
         $ext = strtolower(strrchr($srcPath, '.'));
+        header('Cache-Control:max-age=604800');
         if ($ext == '.jpg' || $ext == '.jpeg') {
             header('content-type:image/jpg');
         } elseif ($ext == '.png') {
