@@ -24,6 +24,7 @@ RewriteRule ^article/(\d+)/index\.html$              article.php?id=$1 [L]
 RewriteRule ^category/(\d+)/index_(\d+)\.html$              category.php?cid=$1&page=$2 [L]
 <IfModule mod_expires.c>
 ExpiresActive On
+ExpiresByType text/html A300
 ExpiresByType image/x-icon A86400
 ExpiresByType application/x-javascript A86400
 ExpiresByType text/css A86400
