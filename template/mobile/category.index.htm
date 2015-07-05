@@ -33,10 +33,9 @@
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner" role="listbox">
             <!--{foreach key=key value=alist from="$article_list"}-->
-            <div class="item<!--{if $key==" 0
-            "}--> active<!--{/if}-->">
+            <div class="item<!--{if $key==" 0 "}--> active<!--{/if}-->">
             <a href="<!--{$alist.url}-->">
-                <img src="<!--{$alist.pic.url}-->_320x160" alt="<!--{$alist.title}-->">
+                <img src="<!--{$alist.pic.url}-->_480x220" alt="<!--{$alist.title}-->">
 
                 <div class="carousel-caption">
                     <h3><!--{$alist.title}--></h3>
@@ -61,7 +60,7 @@
             <a href="<!--{$article_list.url}-->">
                 <!--{if $article_list.pic.url}-->
                 <div class="mobileImage">
-                    <img class="lazy mobileImage" data-src="<!--{$article_list.pic.url}-->_320x160"
+                    <img class="lazy mobileImage" data-src="<!--{$article_list.pic.url}-->_480x220"
                          src="<!--{$site.urls.ui}-->/img/img-default.png">
                 </div>
             </a>
@@ -89,6 +88,7 @@
     <!--{$iCMS.PAGE.NEXT}-->
 </div>
 </div>
+<!--{include file="./public.uijs.htm"}-->
 <script>
     iCMS.scrollLoad("#iCMS-article-list .list", "li", "#pages_next", "<!--{$iCMS.PAGE.TOTAL}-->");
 </script>

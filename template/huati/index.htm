@@ -1,54 +1,37 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
+<head>
     <title><!--{$site.title}-->--<!--{$site.seotitle}--></title>
-    <meta name="keywords" content="<!--{$site.keywords}-->" />
+    <meta name="keywords" content="桐城 <!--{$site.keywords}-->"/>
     <meta name="description" content="<!--{$site.description}-->"/>
-    <meta property="qc:admins" content="152375340763126263757" />
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$site.urls.mobile}-->">
-    <!--{iCMS:public:ui}-->
-      <script>
-          $(function () {
-              $('.carousel').carousel({
-                  interval: 2000
-              });
-          })
-      </script>
-      <style type="text/css">
-          .excerpt{
-              margin:3px;
-              border-radius:4px;
-              border:1px solid #e8e8e8;
-              transition:box-shadow .3s;
-              -moz-transition:box-shadow .3s; /* Firefox 4 */
-              -webkit-transition:box-shadow .3s; /* Safari and Chrome */
-              -o-transition:box-shadow 1s; /* Opera */
-          }
-          .excerpt:hover{
-              border:1px solid red;
-              box-shadow:0px 0px 10px red;
-          }
-      </style>
-  </head>
-  <body class="home blog" data-navto="home" style="background:white">
-    <!--{include file="./header.htm"}-->
-    <section class="container">
-      <div class="content-wrap">
+    <meta property="qc:admins" content="152375340763126263757"/>
+    <!--{include file="/iCMS/public.ui.htm"}-->
+    <link href="<!--{$site.urls.tpl}-->/theme/common.css?version123" rel="stylesheet" type="text/css" />
+</head>
+<!--{include file="./header.htm"}-->
+<body class="home blog background-container" data-navto="home">
+<section class="container">
+    <div class="content-wrap">
         <div class="content excerpts">
             <div class="widget widget_ui_tags">
                 <h3 class="title"><strong style="color:red">去哪儿？</strong></h3>
                 <ul class="posts-xs">
                     <div class="items">
                         <!--{iCMS:link loop='true'}-->
-                        <a target="_blank" href="<!--{$link.url}-->" style="margin:5px;width:170px;height:100px"><img src="<!--{$link.logo}-->" alt="<!--{$link.name}-->"><br><!--{$link.name}--></a>
+                        <a target="_blank" href="<!--{$link.url}-->" style="margin:5px;width:170px;height:100px"><img
+                                src="<!--{$link.logo}-->" alt="<!--{$link.name}-->" style="height:80px;width:170px"><br><!--{$link.name}-->
+                        </a>
                         <!--{/iCMS}-->
                     </div>
                 </ul>
             </div>
-
-          <h3 class="title"><small class="pull-right">记忆像是倒在掌心的水，不论你摊开还是紧握，终究还是会从指缝间流淌干净。</small></h3>
+            <h3 class="title">
+                <small class="pull-right" style="color:red">记忆像是倒在掌心的水，不论你摊开还是紧握，终究还是会从指缝间流淌干净。</small>
+            </h3>
             <strong>当前站点累计访问量(次):<span style="color:red"><!--{$siteCounter}--></span></strong>
+
             <div id="index_carousel" class="carousel slide" data-ride="carousel">
                 <!-- 轮播（Carousel）指标 -->
                 <ol class="carousel-indicators">
@@ -57,17 +40,15 @@
                     <li data-target="#index_carousel" data-slide-to="2"></li>
                     <li data-target="#index_carousel" data-slide-to="3"></li>
                     <li data-target="#index_carousel" data-slide-to="4"></li>
-                    <li data-target="#index_carousel" data-slide-to="5"></li>
-                    <li data-target="#index_carousel" data-slide-to="6"></li>
-                    <li data-target="#index_carousel" data-slide-to="7"></li>
                 </ol>
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
-                    <!--{iCMS:article:list loop="true" pic="true" row="8" orderby="hot"}-->
+                    <!--{iCMS:article:list loop="true" pic="true" row="5"}-->
                     <!--{if $article_list}-->
                     <div class="item <!--{if $article_list.first}-->active<!--{/if}-->">
                         <a href="<!--{$article_list.url}-->">
-                            <img src="<!--{$article_list.pic.url}-->" alt="<!--{$article_list.title}-->"/>
+                            <img src="<!--{$article_list.pic.url}-->_640x320" alt="<!--{$article_list.title}-->"/>
+
                             <div class="carousel-caption">
                                 <span><!--{$article_list.title}--></span>
                             </div>
@@ -80,48 +61,60 @@
                 <a class="carousel-control left" href="#index_carousel" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#index_carousel" data-slide="next">&rsaquo;</a>
             </div>
-          <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10" user="true"}-->
+            <!--{iCMS:article:list loop="true" user="true" page="true" pic="true" row="10"}-->
             <article class="excerpt">
-              <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
-                <img class="thumb" src="<!--{$article_list.pic.url}-->"/>
-              </a>
-              <h2>
-                <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>
-
-                  <a title="<!--{$article_list.user.name}-->"
-                     data-tip="<!--{$tip_selector}--><!--{$article_list.userid}-->"
-                     style="display:block;border-bottom:1px solid #eee"
-                     href="<!--{$article_list.user.url}-->">
-                      <img src="<!--{$article_list.user.avatar}-->" class="img-circle"
-                           style="width:36px;height:36px"
-                           onerror="iCMS.user.noavatar(this);">
-                      <span class="desc" style="background:#FF5E52;color:#fff;padding:0px;font-size:16px;"><!--{$article_list.user.name}--></span>
-
-                  </a>
-              </h2>
-              <p class="note"><!--{$article_list.description}--></p>
-              <footer data-param='<!--{$article_list.param|json_encode}-->'>
-                <time class="new"><!--{$article_list.pubdate|format_date}--></time>
-                /
-                <a href="javascript:;" class="post-like iCMS_article_do" data-param='{"do":"good"}'>
-                  <i class="glyphicon glyphicon-thumbs-up"></i>点赞(<span class="iCMS_good_num"><!--{$article_list.good}--></span>)
+                <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
+                    <img class="thumb" src="<!--{$article_list.pic.url}-->_320x320"/>
                 </a>
-                <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span></footer>
+
+                <h2>
+                    <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>
+                    <a title="<!--{$article_list.user.name}-->"
+                       data-tip="<!--{$tip_selector}--><!--{$article_list.userid}-->"
+                       style="display:block;border-bottom:1px solid #eee"
+                       href="<!--{$article_list.user.url}-->">
+                        <img src="<!--{$article_list.user.avatar}-->" class="img-circle"
+                             style="width:36px;height:36px" onerror="this.src='<!--{$site.url}-->/template/huati/theme/image/logo2.png'">
+                        <span class="desc" style="background:#FF5E52;color:#fff;padding:0px;font-size:16px;"><!--{$article_list.user.name}--></span>
+
+                    </a>
+                </h2>
+
+                <p class="note"><!--{$article_list.description}--></p>
+                <footer data-param='<!--{$article_list.param|json_encode}-->'>
+                    <time class="new"><!--{$article_list.pubdate|format_date}--></time>
+                    /
+                    <a href="javascript:;" class="post-like iCMS_article_do" data-param='{"do":"good"}'>
+                        <i class="glyphicon glyphicon-thumbs-up"></i>点赞(<span class="iCMS_good_num"><!--{$article_list.good}--></span>)
+                    </a>
+                    <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span></footer>
             </article>
-          <!--{/iCMS}-->
+            <!--{/iCMS}-->
             <div class="pagination iCMS_pagination hide">
-              <!--{$iCMS.PAGE.NAV}-->
+                <!--{$iCMS.PAGE.NAV}-->
             </div>
             <div id="pages_next" class="hide">
-              <!--{$iCMS.PAGE.NEXT}-->
+                <!--{$iCMS.PAGE.NEXT}-->
             </div>
         </div>
-      </div>
-      <script>
-      scrollLoad2(".content-wrap .content","article","#pages_next","<!--{$iCMS.PAGE.TOTAL}-->");
-      </script>
-      <!--{include file="./sidebar.htm"}-->
-    </section>
-    <!--{include file="./footer.htm"}-->
-  </body>
+    </div>
+    <!--{include file="./sidebar.htm"}-->
+</section>
+<!--{include file="./footer.htm"}-->
+</body>
 </html>
+<!--{iCMS:public:uijs}-->
+<script>
+    $(function () {
+        $('.carousel').carousel({
+            interval: 2000
+        });
+    });
+    $("#c0").removeClass("active");
+    $("#c<!--{$category.cid|default:0}-->").addClass("active");
+
+</script>
+<script>
+    scrollLoad2(".content-wrap .content", "article", "#pages_next", "<!--{$iCMS.PAGE.TOTAL}-->");
+</script>
+

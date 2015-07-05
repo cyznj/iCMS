@@ -12,6 +12,12 @@ function public_ui($vars=null){
 	iPHP::assign("ui",$vars);
 	echo iPHP::view("iCMS://{$dir}public.ui.htm");
 }
+function public_uijs($vars=null){
+    isset($vars['script']) OR $vars['script'] = true;
+    $dir = isset($vars['dir'])?$vars['dir'].'/':'';
+    iPHP::assign("ui",$vars);
+    echo iPHP::view("iCMS://{$dir}public.uijs.htm");
+}
 function public_common($vars=null){
 	echo iPHP::view('iCMS://public.common.htm');
 }

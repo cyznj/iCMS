@@ -2,13 +2,14 @@
 <html lang="zh-CN">
   <head>
     <title><!--{$article.title}-->_<!--{$category.name}-->_<!--{$site.title}-->_<!--{$site.seotitle}--></title>
-    <meta name="keywords" content="<!--{$article.title}--> <!--{$article.keywords}-->" />
+    <meta name="keywords" content="桐城 <!--{$article.kewords}-->" />
     <meta name="description" content="<!--{$article.description}-->"/>
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
     <!--{iCMS:public:ui}-->
+    <link href="<!--{$site.urls.tpl}-->/theme/common.css?version123" rel="stylesheet" type="text/css" />
   </head>
-  <body class="single single-post postid-<!--{$article.id}--> single-format-standard" data-navto="<!--{$category.dir}-->">
+  <body class="single single-post postid-<!--{$article.id}--> single-format-standard background-container" data-navto="<!--{$category.dir}-->">
     <!--{include file="./header.htm"}-->
     <section class="container">
       <div class="content-wrap">
@@ -43,21 +44,15 @@
               <a href="<!--{$article.url}-->"><!--{$article.title}--></a>
             </p>
           </article>
+          <!--{iCMS:public:uijs}-->
           <div class="article-social" data-param='<!--{$article.param|json_encode}-->'>
             <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
               <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
             </a>
-            <div class="action-share bdsharebuttonbox" id="share-bd">
-              <strong>分享到：</strong>
-              <a class="bds_qzone" data-cmd="qzone"></a>
-              <a class="bds_tsina" data-cmd="tsina"></a>
-              <a class="bds_weixin bdsm" data-cmd="weixin"></a>
-              <a class="bds_tqq" data-cmd="tqq"></a>
-              <a class="bds_sqq bdsm" data-cmd="sqq"></a>
-              <a class="bds_renren" data-cmd="renren"></a>
-              <a class="bds_douban" data-cmd="douban"></a>
-              <span class="bds_count" data-cmd="count"></span>
-            </div>
+              <div>
+                  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+              </div>
           </div>
           <nav class="article-nav mt20">
             <span class="article-nav-prev">上一篇<br>
@@ -113,16 +108,9 @@
             <a href="javascript:;" class="action action-like iCMS_article_do" data-param='{"do":"good"}'>
               <i class="glyphicon glyphicon-thumbs-up"></i>很酷 (<span class="iCMS_good_num"><!--{$article.good}--></span>)
             </a>
-            <div class="action-share bdsharebuttonbox">
-              <strong>分享到：</strong>
-              <a class="bds_qzone" data-cmd="qzone"></a>
-              <a class="bds_tsina" data-cmd="tsina"></a>
-              <a class="bds_weixin bdsm" data-cmd="weixin"></a>
-              <a class="bds_tqq" data-cmd="tqq"></a>
-              <a class="bds_sqq bdsm" data-cmd="sqq"></a>
-              <a class="bds_renren" data-cmd="renren"></a>
-              <a class="bds_douban" data-cmd="douban"></a>
-              <span class="bds_count" data-cmd="count"></span>
+            <div>
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
             </div>
           </div>
           <div class="widget widget_ui_viewposts" data-spy="affix" data-offset-top="1200">
@@ -153,7 +141,7 @@
           <div class="widget widget_ui_posts">
             <h3 class="title"><strong>特别推荐</strong></h3>
             <ul class="posts-xs">
-              <!--{iCMS:article:list loop="true" row="7" pid="1" cid="$category.cid"}-->
+              <!--{iCMS:article:list loop="true" row="7" pid="2" cid="$category.cid"}-->
               <li class="item-<!--{$article_list.id}-->">
                 <a target="_blank" href="<!--{$article_list.url}-->">
                   <img class="lazy thumb" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$article_list.pic.url}-->"/>
@@ -196,26 +184,25 @@
       with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
     </script>
     <!--{include file="./footer.htm"}-->
-
     <script type="text/javascript">
-        (function(win,doc){
-            var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
-            if (!win.alimamatk_show) {
-                s.charset = "gbk";
-                s.async = true;
-                s.src = "http://a.alimama.cn/tkapi.js";
-                h.insertBefore(s, h.firstChild);
-            };
-            var o = {
-                pid: "mm_57222317_9928586_33352719",/*推广单元ID，用于区分不同的推广渠道*/
-                appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/
-                unid: "",/*自定义统计字段*/
-                type: "click" /* click 组件的入口标志 （使用click组件必设）*/
-            };
-            win.alimamatk_onload = win.alimamatk_onload || [];
-            win.alimamatk_onload.push(o);
-        })(window,document);
-    </script>
+    (function(win,doc){
+        var s = doc.createElement("script"), h = doc.getElementsByTagName("head")[0];
+        if (!win.alimamatk_show) {
+            s.charset = "gbk";
+            s.async = true;
+            s.src = "http://a.alimama.cn/tkapi.js";
+            h.insertBefore(s, h.firstChild);
+        };
+        var o = {
+            pid: "mm_57222317_9928586_33352719",/*推广单元ID，用于区分不同的推广渠道*/
+            appkey: "",/*通过TOP平台申请的appkey，设置后引导成交会关联appkey*/
+            unid: "",/*自定义统计字段*/
+            type: "click" /* click 组件的入口标志 （使用click组件必设）*/
+        };
+        win.alimamatk_onload = win.alimamatk_onload || [];
+        win.alimamatk_onload.push(o);
+    })(window,document);
+</script>
 
   </body>
 </html>

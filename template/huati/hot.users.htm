@@ -7,6 +7,16 @@
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
     <!--{iCMS:public:ui}-->
+    <link href="<!--{$site.urls.tpl}-->/theme/common.css?version123" rel="stylesheet" type="text/css" />
+
+          <script type="text/javascript">
+
+          function nofind() {
+              var img = event.srcElement;
+              img.src = '<!--{$site.url}-->/template/huati/theme/image/logo2.png';
+              img.onerror = null;
+          }
+      </script>
   </head>
   <body class="home blog" data-navto="home">
     <!--{include file="./header.htm"}-->
@@ -29,7 +39,7 @@
           <!--{iCMS:user:list loop="true" row="30"}-->
               <li>
                 <a href="<!--{$article_list.url}-->">
-                <img class="lazy thumb img-circle" style="width:140px;height:140px"  src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$user_list.avatar}-->" onerror="iCMS.user.noavatar(this);"/>
+                <img class="lazy thumb img-circle" style="width:140px;height:140px" onerror="iCMS.user.noavatar(this);" src="<!--{$site.urls.ui}-->/img/1x1.gif" data-src="<!--{$user_list.avatar}-->"/>
                 </a>
                 <!--{$user_list.at}-->
                 <a href="<!--{$user_list.url}-->">昵称：<!--{$user_list.nickname}--></a>
@@ -38,6 +48,7 @@
         </ul>
       </div>
     </section>
+    <!--{iCMS:public:uijs}-->
     <script>
       window._bd_share_config = {
         common : {

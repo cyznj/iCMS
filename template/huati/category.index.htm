@@ -7,8 +7,10 @@
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$category.url|replace:$site.url:$site.urls.mobile}-->">
     <!--{iCMS:public:ui}-->
+    <link href="<!--{$site.urls.tpl}-->/theme/common.css?version123" rel="stylesheet" type="text/css" />
+
   </head>
-  <body class="archive category" data-navto="<!--{$category.dir}-->">
+  <body class="archive category background-container" data-navto="<!--{$category.dir}-->">
     <!--{include file="./header.htm"}-->
     <section class="container">
       <div class="content-wrap">
@@ -17,7 +19,7 @@
           <!--{iCMS:article:list loop="true" page="true" tags="true" pic="true" row="10" sub="true" cid="$category.cid"}-->
             <article class="excerpt">
               <a target="_blank" class="thumbnail2" href="<!--{$article_list.url}-->">
-                <img class="thumb" src="<!--{$article_list.pic.url}-->"/>
+                <img class="thumb" src="<!--{$article_list.pic.url}-->_640x320"/>
               </a>
               <h2>
                 <a target="_blank" href="<!--{$article_list.url}-->"><!--{$article_list.title}--></a>
@@ -27,7 +29,7 @@
                 <time class="new"><!--{$article_list.pubdate|format_date}--></time>
                 /
                 <a href="javascript:;" class="post-like iCMS_article_do" data-param='{"do":"good"}'>
-                  <i class="glyphicon glyphicon-thumbs-up"></i><!--{$article_list.tags_fname}--> (<span class="iCMS_good_num"><!--{$article_list.good}--></span>)
+                  <i class="glyphicon glyphicon-thumbs-up"></i>点赞(<span class="iCMS_good_num"><!--{$article_list.good}--></span>)
                 </a>
                 <span class="post-views">阅读(<!--{$article_list.hits.count}-->)</span></footer>
             </article>
@@ -40,11 +42,12 @@
             </div>
         </div>
       </div>
-      <script>
-      scrollLoad2(".content-wrap .content","article","#pages_next","<!--{$iCMS.PAGE.TOTAL}-->");
-      </script>
       <!--{include file="./sidebar.htm"}-->
     </section>
     <!--{include file="./footer.htm"}-->
   </body>
 </html>
+<!--{iCMS:public:uijs}-->
+<script>
+    scrollLoad2(".content-wrap .content","article","#pages_next","<!--{$iCMS.PAGE.TOTAL}-->");
+</script>

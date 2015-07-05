@@ -1,20 +1,3 @@
-<script>
-  $(function () {
-    $("#iCMS-search-box").on('hide.bs.collapse', function () {
-        $('[name="q"]',this).val("");
-    })
-    $(".close","#iCMS-navbar-login").click(function(event) {
-      $("#iCMS-navbar-login").hide();
-      if(!$("#iCMS-navbar-login").hasClass('affix')){
-        iCMS.tip($(".navbar-toggle"),"登录请点击此处","left");
-        window.setTimeout(function(){
-          $(".navbar-toggle").tooltip('destroy');
-        },3000);
-      }
-    });
-
-  })
-</script>
 <nav id="header" style="background:white" class="navbar navbar-default" role="navigation"  data-offset-top="90">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -52,9 +35,6 @@
             <span class="sr-only">Close</span>
           </button>
       </div>
-      <script>
-          $("#iCMS-navbar-login").hide();
-      </script>
     </div>
 
   </div>

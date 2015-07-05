@@ -1,0 +1,26 @@
+<script src="<!--{$iCMS.UI}-->/jquery-1.11.0.min.js"></script>
+<!--[if lt IE 9]>
+<script src="<!--{$iCMS.UI}-->/ie/html5shiv.min.js"></script>
+<script src="<!--{$iCMS.UI}-->/ie/respond.min.js"></script>
+<![endif]-->
+
+<!--{if $ui.script}-->
+<script src="<!--{$iCMS.UI}-->/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="<!--{$iCMS.UI}-->/artDialog/6.0.3/dialog-plus-min.js"></script>
+<script src="<!--{$iCMS.UI}-->/iCMS-6.0.0.js"></script>
+<script src="<!--{$site.urls.ui}-->/iCMS.user-6.0.0.js"></script>
+<script src="<!--{$site.urls.ui}-->/iCMS.mobile-6.0.0.js"></script>
+<script src="<!--{$site.urls.ui}-->/jquery.infinitescroll.min.js"></script>
+<!--{/if}-->
+<script>
+    window.iCMS.init({
+        API:"<!--{iCMS:router url='/api'}-->",
+                PUBLIC:"<!--{$site.urls.public}-->",
+    COOKIE:'<!--{$iCMS.COOKIE_PRE}-->',
+    DIALOG:{title:'<!--{$site.name}--> 提示信息'},
+        COMMENT:{seccode:<!--{if $iCMS.CONFIG.comment.seccode }-->true<!--{else}-->false<!--{/if}-->}
+    });
+    $(function(){
+        iCMS.run();
+    })
+</script>

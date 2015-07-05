@@ -205,7 +205,7 @@ a.circle { color: #fff; }
 .article_list .panel-footer i, .panel-footer s { float: right }
 .article_list .panel-footer time, .panel-footer s { color: #999 }
 /* category */
-.iCMS-mobile #cat_carousel .carousel-inner img { width: 100%; height: 180px; }
+.iCMS-mobile #cat_carousel .carousel-inner img { width: 100%; height: 210px; }
 /* .iCMS-mobile .category_header { font-size: 18px; line-height: 14px; margin: 5px; height: 46px; background-color: #F8F8F8; }
 .iCMS-mobile .category_header.affix { width: 100%; top: 0px; z-index: 9999; margin: 0px; }
 .iCMS-mobile .category_header h3.title { height: 46px; overflow: hidden; font: 20px/46px SimHei; text-align: center; color: #87b32e; }

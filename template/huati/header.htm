@@ -1,69 +1,34 @@
-<style>
-    .animated_div
-    {
-        -webkit-transition:-webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s;
-        -webkit-border-radius:5px;
-        -o-transition-property:width,height,-o-transform,background,font-size,opacity;
-        -o-transition-duration:1s,1s,1s,1s,1s,1s;
-        -moz-transition-property:width,height,-o-transform,background,font-size,opacity;
-        -moz-transition-duration:1s,1s,1s,1s,1s,1s;
-        transition-property:width,height,transform,background,font-size,opacity;
-        transition-duration:1s,1s,1s,1s,1s,1s;
-        border-radius:5px;
-    }
-
-    .animated_div:hover
-    {
-        position:relative;
-        -moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-    .titlecircle{
-        text-align:center;
-        line-height:50px;
-        border:1px solid red;
-        height:50px;
-        width:80px;
-        border-radius:10px;
-        -moz-border-radius:10px; /* 老的 Firefox */
-    }
-
-</style>
-
-<header class="header">
+<div class="header">
     <div class="container">
-      <h1 class="logo" onmouseover="$(this).find('span').css('display','')" onmouseout="$(this).find('span').css('display','none')">
-        <a href="<!--{$site.url}-->" title="<!--{$site.seotitle}-->">
-          <!--{$site.name}-->
-        </a>
-        <span style="display:none">微锤子等你！</span>
-      </h1>
-      <ul class="nav">
-        <li class="navto-home active" id="c0">
-          <a href="<!--{$site.url}-->" class="titlecircle">首页</a>
-        </li>
-          <!--{iCMS:category:list loop="true" stype='top' row="7"}-->
-          <li class="navto-<!--{$category_list.dir}--> shakediv active" id="c<!--{$category_list.cid}-->">
-           <a href="<!--{$category_list.url}-->" class="titlecircle"><!--{$category_list.name}--></a>
-          </li>
-          <!--{iCMS:category:list as="sub_category" loop="true" stype='sub' row="10" cid=$category_list.cid}-->
-          <li class="shakediv active" id="c<!--{$sub_category.cid}-->"><a class="titlecircle" href="<!--{$sub_category.url}-->"> <i class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
-          <!--{/iCMS}-->
-        <!--{/iCMS}-->
-      </ul>
-      <div class="user-signin" id="iCMS-nav-login">
-        <span evt="login"><a href="<!--{iCMS:router url='/api/user/login'}-->" class="iCMS_user_login" title="登录">登录</a></span> |
-        <span evt="login" reg="1"><a href="<!--{iCMS:router url='/api/user/register'}-->" target="_blank">注册</a></span>
-      </div>
-      <div class="user-welcome" id="iCMS-nav-profile">
-        <!--{include file="iCMS://user/menu.htm"}-->
-      </div>
-
+        <h1 class="logo animated_div" onmouseover="$(this).find('span').css('display','')"
+            onmouseout="$(this).find('span').css('display','none')">
+            <a href="<!--{$site.url}-->" title="<!--{$site.seotitle}-->">
+            </a>
+            <span style="display:none">微锤子</span>
+        </h1>
+        <ul class="nav">
+            <li class="navto-home active" id="c0">
+                <a href="<!--{$site.url}-->" class="titlecircle">首页</a>
+            </li>
+            <!--{iCMS:category:list loop="true" stype='top' row="7"}-->
+            <li class="navto-<!--{$category_list.dir}--> shakediv active" id="c<!--{$category_list.cid}-->">
+                <a href="<!--{$category_list.url}-->" class="titlecircle"><!--{$category_list.name}--></a>
+            </li>
+            <!--{iCMS:category:list as="sub_category" loop="true" stype='sub' row="10" cid=$category_list.cid}-->
+            <li class="shakediv active" id="c<!--{$sub_category.cid}-->"><a href="<!--{$sub_category.url}-->"
+                                                                            class="titlecircle"> <i
+                    class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
+            <!--{/iCMS}-->
+            <!--{/iCMS}-->
+        </ul>
+        <div class="user-signin" id="iCMS-nav-login">
+            <span evt="login"><a href="<!--{iCMS:router url='/api/user/login'}-->" class="iCMS_user_login"
+                                 title="登录">登录</a></span> |
+            <span evt="login" reg="1"><a href="<!--{iCMS:router url='/api/user/register'}-->"
+                                         target="_blank">注册</a></span>
+        </div>
+        <div class="user-welcome" id="iCMS-nav-profile">
+            <!--{include file="iCMS://user/menu.htm"}-->
+        </div>
     </div>
-  </header>
-<script type="text/javascript">
-$("#c0").removeClass("active");
-$("#c<!--{$category.cid|default:0}-->").addClass("active");
-</script>
+</div>

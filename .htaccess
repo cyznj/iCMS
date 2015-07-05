@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteBase /
-RewriteRule ^(res/.*/.*/.*/.*\.(jpg|jpeg|png)_\d+x\d+)$ /public/resize.php?file=$1 [L]
+RewriteRule ^(res/.*\.(jpg|jpeg|png)_\d+x\d+)$ /public/resize.php?file=$1 [L]
 
 RewriteRule ^usercp/(\d+)/$                     user.php?do=home&uid=$1 [QSA,L]
 RewriteRule ^usercp/(\d+)/(\d+)/$             user.php?do=home&uid=$1&cid=$2 [L]
@@ -19,19 +19,23 @@ RewriteRule ^api$                         public/api.php  [QSA,L]
 RewriteRule ^api/([^\/]\w+)$             public/api.php?app=$1 [QSA,L]
 RewriteRule ^api/(\w+)/(\w+)$             public/api.php?app=$1&do=$2 [QSA,L]
 RewriteRule ^api/user/login/(\w+)$         public/api.php?app=user&do=login&sign=$1 [L]
-
+RewriteRule ^category/(\d+)/index\.html$             category.php?cid=$1 [L]
+RewriteRule ^article/(\d+)/index\.html$              article.php?id=$1 [L]
+RewriteRule ^category/(\d+)/index_(\d+)\.html$              category.php?cid=$1&page=$2 [L]
 <IfModule mod_expires.c>
 ExpiresActive On
-ExpiresByType image/x-icon A300
-ExpiresByType application/x-javascript A300
-ExpiresByType text/css A300
-ExpiresByType image/gif A300
-ExpiresByType image/png A300
-ExpiresByType image/jpeg A300
-ExpiresByType application/x-shockwave-flash A300
-ExpiresByType video/x-flv A300
-ExpiresByType application/pdf A300
-<FilesMatch "\.(txt|xml|js|css|htm|html)$">
-ExpiresDefault A300
+ExpiresByType image/x-icon A86400
+ExpiresByType application/x-javascript A86400
+ExpiresByType text/css A86400
+ExpiresByType image/gif A86400
+ExpiresByType image/png A86400
+ExpiresByType image/jpg A86400
+ExpiresByType image/jpeg A86400
+ExpiresByType application/x-shockwave-flash A86400
+ExpiresByType video/x-flv A86400
+ExpiresByType application/pdf A86400
+<FilesMatch "\.(txt|xml|js|css|htm|html|jpg|gif)$">
+ExpiresDefault A86400
 </FilesMatch>
+
 </IfModule>
