@@ -37,12 +37,12 @@
         <li class="dropdown" id="c<!--{$category_list.cid}-->"> <a class="dropdown-toggle" data-toggle="dropdown" href="<!--{$category_list.url}-->" target="_blank"><span><!--{$category_list.name}--></span><b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu">
             <!--{iCMS:category:list as="sub_category" loop="true" stype='sub' row="10" cid=$category_list.cid}-->
-            <li id="c<!--{$sub_category.cid}-->"><a href="<!--{$sub_category.url}-->" target="_blank"> <i class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
+            <li id="c<!--{$sub_category.cid}-->"><a href="<!--{$sub_category.url}-->"> <i class="fa fa-star-o"></i> <!--{$sub_category.name}--></a></li>
             <!--{/iCMS}-->
           </ul>
         </li>
         <!--{else}-->
-        <li id="c<!--{$category_list.cid}-->"><a href="<!--{$category_list.url}-->" target="_blank"><span><!--{$category_list.name}--></span></a></li>
+        <li id="c<!--{$category_list.cid}-->"><a href="<!--{$category_list.url}-->"><span><!--{$category_list.name}--></span></a></li>
         <!--{/if}-->
         <!--{/iCMS}-->
         <script type="text/javascript">
