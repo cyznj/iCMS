@@ -6,7 +6,15 @@
     <meta name="description" content="<!--{$article.description}-->"/>
     <meta name="mobile-agent" content="format=xhtml;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
     <meta name="mobile-agent" content="format=html5;url=<!--{$article.url|replace:$site.url:$site.urls.mobile}-->">
-    <!--{iCMS:public:ui}-->
+      <!--必填-->
+      <meta property="og:type" content="news"/>
+      <meta property="og:title" content="<!--{$article.title}-->"/>
+      <meta property="og:description" content="<!--{$article.description}-->"/>
+      <meta property="og:image" content="<!--{$article.pic.url|thumb:'640':'320'}-->"/>
+      <!--选填-->
+      <meta property="og:url" content="<!--{$article.url}-->"/>
+
+      <!--{iCMS:public:ui}-->
     <link href="<!--{$site.urls.tpl}-->/theme/common.css?version123" rel="stylesheet" type="text/css" />
   </head>
   <body class="single single-post postid-<!--{$article.id}--> single-format-standard background-container" data-navto="<!--{$category.dir}-->">

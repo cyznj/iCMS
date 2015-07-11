@@ -4,7 +4,16 @@
     <title><!--{$article.title}-->_<!--{$category.name}-->_<!--{$site.title}-->_<!--{$site.seotitle}--></title>
     <meta name="keywords" content="<!--{$article.title}--> <!--{$article.keywords}-->" />
     <meta name="description" content="<!--{$article.description}-->"/>
-    <!--{iCMS:public:ui}-->
+      <!--必填-->
+      <meta property="og:type" content="news"/>
+      <meta property="og:title" content="<!--{$article.title}-->"/>
+      <meta property="og:description" content="<!--{$article.description}-->"/>
+      <meta property="og:image" content="<!--{$article.pic.url|thumb:'640':'320'}-->"/>
+
+      <!--选填-->
+      <meta property="og:url" content="<!--{$article.url}-->"/>
+
+      <!--{iCMS:public:ui}-->
   </head>
   <body class="iCMS-mobile">
     <!--{include file="./navbar.htm"}-->
